@@ -1,0 +1,28 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Configuracion privada
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Archivos temporales de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Configuracion local del IDE
+.idea/
