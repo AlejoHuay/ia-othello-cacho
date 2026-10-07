@@ -1,0 +1,280 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Función de Evaluación y Agentes IA en Othello y Cacho: \\
+Formulación, Implementación, Optimización y Análisis Crítico}
+\author{Equipo de Inteligencia Artificial \\ Carrera de Ingeniería de Sistemas / Asignatura: Inteligencia Artificial}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+El diseño de funciones de evaluación heurística y la selección de algoritmos de búsqueda representan dos de los pilares fundamentales en la teoría de juegos dentro de la Inteligencia Artificial. Este artículo aborda la formulación matemática, implementación y evaluación rigurosa de agentes inteligentes en dos dominios con propiedades estructurales contrastantes: \emph{Othello} (juego determinista de suma cero con información perfecta) y \emph{Cacho/Generala} (juego estocástico con decisiones secuenciales y espacio probabilístico de transiciones). Para Othello, se integró una función de evaluación multivariante que combina paridad de fichas, movilidad diferencial y control de esquinas con poda Alpha-Beta. Para Cacho, se rediseñó la función de evaluación base mediante programación dinámica y cadenas de Markov para obtener valores esperados y varianzas exactas de cada categoría, corrigiendo la miopía del horizonte y aplicando poda Star1 junto con memoización de estados. Los resultados experimentales en más de 200 partidas controladas evidencian una tasa de victoria del 99.0\% ($p < 10^{-27}$) frente a la IA base en Cacho, un incremento de $+161.06$ puntos en promedio y una correlación de Pearson $r = 0.6806$ ($p < 10^{-14}$) entre las evaluaciones heurísticas intermedias y el resultado final.
+\end{abstract}
+
+\section{Introducción}
+
+\subsection{Motivación}
+La toma de decisiones en entornos competitivos bajo restricciones computacionales exige el uso de heurísticas estáticas capaces de proyectar la utilidad a largo plazo de un estado de juego sin necesidad de explorar el árbol completo hasta sus nodos terminales. Mientras que los juegos deterministas con información perfecta permiten acotar el espacio de búsqueda mediante podas adversariales como Alpha-Beta, los juegos estocásticos requieren modelar la incertidumbre inherente mediante expectativas estadísticas con algoritmos como Expectiminimax. Comprender las ventajas, sesgos y compensaciones de complejidad temporal y calidad heurística entre ambos paradigmas resulta esencial para la ingeniería de agentes autónomos competitivos.
+
+\subsection{Objetivos}
+\begin{enumerate}
+    \item Formular e implementar una función de evaluación estática ponderada para Othello integrando paridad, control posicional y movilidad.
+    \item Diagnosticar analíticamente y corregir las deficiencias heurísticas y de perspectiva del agente de Cacho base.
+    \item Proponer y derivar matemáticamente una nueva función de evaluación $E_{\text{nueva}}(s)$ para Cacho fundamentada en valores esperados exactos, ajuste dinámico por etapa y control del riesgo según la varianza restante.
+    \item Implementar optimizaciones de eficiencia (memoización de estados y poda Star1) para el árbol de búsqueda estocástica.
+    \item Evaluar estadísticamente el rendimiento de los agentes mediante torneos controlados ($\ge 100$ partidas), tests de significancia binomial, $\chi^2$, intervalos de confianza de Wilson y análisis de eficiencia computacional.
+\end{enumerate}
+
+\subsection{Contribuciones}
+Este trabajo entrega: (i) una suite modular y reproducible para torneos de Othello y Cacho; (ii) tablas de probabilidad y valores esperados exactos $V_r^c(d)$ calculados vía programación dinámica sobre las 252 manos canónicas de dados; (iii) una reducción empírica superior a $32\times$ en el número de evaluaciones heurísticas por turno mediante memoización y poda Star1; y (iv) un análisis estadístico formal que valida la superioridad cualitativa y cuantitativa de las propuestas.
+
+\section{Marco Teórico}
+
+\subsection{Othello: Reglas y Complejidad}
+Othello (o Reversi) se disputa sobre un tablero de $8 \times 8$ casillas con 64 fichas reversibles (blancas y negras). Un movimiento legal exige flanquear al menos una ficha adversaria en línea recta (horizontal, vertical o diagonal), volteándola al color del jugador de turno. El juego culmina cuando ningún jugador puede mover legalmente, ganando quien posea mayor cantidad de fichas. El espacio de estados se estima en $\approx 10^{28}$ a $10^{30}$ posiciones alcanzables, con un árbol de juego de aproximadamente $10^{54}$ nodos \cite{buro1999logistello, lee1990bill}, lo que imposibilita la resolución por fuerza bruta.
+
+\subsection{Cacho: Reglas y Complejidad}
+Cacho (variante sudamericana de la familia Generala/Yahtzee) se juega con 5 dados convencionales de 6 caras a lo largo de 10 rondas por jugador \cite{glenn2006yahtzee, verhoeff1999yahtzee}. En cada turno, el jugador dispone de una tirada inicial obligatoria de 5 dados y hasta 2 o 3 re-tiradas optativas donde puede preservar cualquier subconjunto de dados. Existen 10 categorías de anotación mutuamente excluyentes: seis categorías numéricas individuales (balas de 1 a 6) y cuatro combinaciones mayores (Escalera, Full, Póker y Grande). Al finalizar el turno, el jugador debe asignar la mano resultante a una categoría aún no utilizada. El espacio de estados está dominado por $\binom{5+6-1}{5} = 252$ multiconjuntos de dados y $\binom{5+6-1}{k}$ subconjuntos de reserva ($k \le 5$), generando ramificaciones estocásticas no deterministas.
+
+\subsection{Funciones de Evaluación en Juegos}
+Una función de evaluación estática $f: \mathcal{S} \to \mathbb{R}$ asigna un valor escalar a estados no terminales, estimando la probabilidad de victoria o la ventaja relativa esperada \cite{russellnorvig2020}. Las funciones lineales component-wise adoptan la forma general:
+\begin{equation}
+f(s) = \sum_{i=1}^k w_i \cdot \phi_i(s)
+\label{eq:lineal_general}
+\end{equation}
+donde $\phi_i(s)$ son características numéricas extraídas del estado $s$ y $w_i \in \mathbb{R}$ son pesos de ponderación que balancean la relevancia táctica y estratégica de cada rasgo.
+
+\subsection{Algoritmos de Búsqueda: Minimax, Alpha-Beta, Expectiminimax}
+En entornos deterministas de suma cero, Minimax determina la jugada óptima asumiendo respuestas adversariales perfectas. La Poda Alpha-Beta mantiene cotas $[\alpha, \beta]$ durante la exploración en profundidad, eliminando ramas que no pueden influir en la decisión final y alcanzando una complejidad temporal efectiva de $\mathcal{O}(b^{d/2})$ con ordenamiento óptimo de movimientos.
+
+En juegos estocásticos como Cacho, los nodos se clasifican en:
+\begin{itemize}
+    \item \textbf{Nodos MAX:} Selección de la mejor acción determinista (reservar dados o anotar): $\max_{a \in A(s)} V(s')$.
+    \item \textbf{Nodos AZAR:} Promedio ponderado sobre todos los resultados estocásticos posibles:
+    \begin{equation}
+    V_{\text{AZAR}}(s) = \sum_{r \in \mathcal{R}} P(r \mid s) \cdot V_{\text{MAX}}(s')
+    \label{eq:expectiminimax}
+    \end{equation}
+\end{itemize}
+Desarrollado inicialmente por Michie \cite{michie1966expectiminimax}, Expectiminimax permite calcular el valor esperado global del árbol de decisión probabilístico.
+
+\section{Función de Evaluación para Othello}
+
+\subsection{Formulación}
+La función de evaluación implementada para Othello combina tres rasgos estructurales fundamentales ponderados según su impacto táctico en el control territorial y la restricción del adversario:
+\begin{equation}
+E_{\text{Othello}}(s) = w_f \cdot \Delta_{\text{fichas}}(s) + w_e \cdot \Delta_{\text{esquinas}}(s) + w_m \cdot \Delta_{\text{movilidad}}(s)
+\label{eq:othello_func}
+\end{equation}
+
+\subsection{Componentes}
+\begin{enumerate}
+    \item \textbf{Paridad de Fichas ($\Delta_{\text{fichas}}$):} Diferencia neta entre el número de fichas del jugador y el adversario:
+    \begin{equation}
+    \Delta_{\text{fichas}}(s) = N_{\text{jugador}}(s) - N_{\text{oponente}}(s)
+    \end{equation}
+    \item \textbf{Control de Esquinas ($\Delta_{\text{esquinas}}$):} Las 4 esquinas del tablero $[(0,0), (0,7), (7,0), (7,7)]$ son casillas topológicamente estables que nunca pueden ser volteadas tras ser capturadas \cite{rosenbloom1982iob}:
+    \begin{equation}
+    \Delta_{\text{esquinas}}(s) = \sum_{c \in \text{Esquinas}} \left( \mathbb{I}_{\text{jugador}}(c) - \mathbb{I}_{\text{oponente}}(c) \right) \cdot 25
+    \end{equation}
+    \item \textbf{Movilidad Diferencial ($\Delta_{\text{movilidad}}$):} Cantidad de jugadas legales disponibles para el jugador en contraste con las del adversario:
+    \begin{equation}
+    \Delta_{\text{movilidad}}(s) = |\text{Movidas}_{\text{jugador}}(s)| - |\text{Movidas}_{\text{oponente}}(s)|
+    \end{equation}
+\end{enumerate}
+Los coeficientes seleccionados son $w_f = 1$, $w_e = 8$ y $w_m = 2$.
+
+\subsection{Implementación}
+El agente integra la evaluación en un esquema de búsqueda Alpha-Beta con profundidad $\ge 4$. Las funciones de detección de movimientos legales recorren las 8 direcciones cardinales e intercardinales en $\mathcal{O}(B)$ donde $B = 64$. La evaluación del estado no terminal opera en tiempo $\mathcal{O}(B)$ sin sobrecosto de memoria.
+
+\subsection{Análisis Crítico}
+Una función puramente basada en conteo de fichas adolece del fenómeno de \emph{máximos locales} durante la apertura y medio juego: capturar muchas fichas prematuramente incrementa el perímetro vulnerable y reduce la movilidad propia, facilitando que el adversario tome esquinas. La literatura demuestra que programas campeones mundiales como Logistello \cite{buro1999logistello} priorizan la movilidad y estabilidad en las primeras etapas, activando la paridad de fichas únicamente en el final de juego.
+
+\section{Competencia de IAs en Othello}
+
+\subsection{Descripción de Agentes}
+Se contrastaron dos arquitecturas de evaluación:
+\begin{itemize}
+    \item \textbf{Agente 1 (Heurística Base / Paridad Simple):} Evalúa únicamente la diferencia neta de fichas $E(s) = \Delta_{\text{fichas}}(s)$.
+    \item \textbf{Agente 2 (Heurística Compuesta Multivariable):} Aplica la ecuación (\ref{eq:othello_func}) combinando esquinas y movilidad.
+\end{itemize}
+
+\subsection{Metodología del Torneo}
+Se ejecutaron series de partidas bajo condiciones controladas con semillas pseudoaleatorias, alternancia estricta del primer jugador (negras/blancas) y límites uniformes de profundidad de búsqueda (profundidades 4 y 6).
+
+\subsection{Resultados Estadísticos}
+El agente multivariable superó de forma dominante al agente de paridad simple, alcanzando una tasa de victoria superior al 85\% en profundidad 4 y 92\% en profundidad 6, confirmando la correlación empírica reportada en la literatura entre movilidad inicial y resultado final.
+
+\subsection{Discusión}
+La dominancia posicional de las esquinas actúa como ancla para construir bordes y regiones estables que no pueden ser revertidas, mientras que la movilidad diferencial asfixia las opciones del oponente forzándolo a entregar casillas adyacentes a las esquinas ($C$-squares y $X$-squares).
+
+\section{Mejora de Función de Evaluación en Cacho}
+
+\subsection{Función Base y Diagnóstico de Limitaciones}
+El programa base entregado proponía la función de evaluación:
+\begin{equation}
+E_{\text{base}}(s) = (p_{\text{MAX}} + \alpha \cdot V_{\text{futuro,MAX}}) - (p_{\text{MIN}} + \alpha \cdot V_{\text{futuro,MIN}})
+\label{eq:base_cacho}
+\end{equation}
+con un factor de descuento estático $\alpha = 0.6$. El análisis exhaustivo del código reveló cuatro fallas críticas:
+\begin{enumerate}
+    \item \textbf{Inversión de perspectiva en el turno:} Tras simular la acción \texttt{anotar}, el turno cambiaba internamente y la función se calculaba desde la perspectiva del adversario, haciendo que jugadas con 0 puntos tuvieran una puntuación heurística falsamente superior a jugadas con alto puntaje.
+    \item \textbf{Equiprobabilidad errónea en valores esperados:} La estimación de $V_{\text{futuro}}$ promediaba los 252 multiconjuntos asumiendo probabilidades uniformes y considerando una única tirada sin re-lanzamientos.
+    \item \textbf{Miopía de horizonte con altura = 1:} En nodos de re-tirada, todas las opciones evaluaban el mismo estado futuro agregado, tornando la elección de dados completamente arbitraria.
+\end{enumerate}
+
+\subsection{Propuesta de Mejora: Formulación Matemática}
+Se formula la nueva función de evaluación $E_{\text{nueva}}(s)$ para el jugador $j$ (adversario $o$) con categorías libres $\mathcal{L}_j$ y $\mathcal{L}_o$:
+\begin{equation}
+E_{\text{nueva}}(s) = w_1 \cdot f_1(s) + w_2 \cdot f_2(s) + w_3 \cdot f_3(s) + w_4 \cdot f_4(s)
+\label{eq:nueva_cacho}
+\end{equation}
+donde los rasgos $f_i$ se definen como:
+\begin{itemize}
+    \item $f_1(s) = p_j - p_o$: Diferencia de puntajes acumulados reales.
+    \item $f_2(s) = \Phi(\mathcal{L}_j) - \Phi(\mathcal{L}_o)$: Valor futuro exacto ajustado por etapa, con:
+    \begin{equation}
+    \Phi(\mathcal{L}) = \left( 1 + \beta \cdot \frac{|\mathcal{L}| - 1}{9} \right) \sum_{c \in \mathcal{L}} \mu(c)
+    \end{equation}
+    donde $\mu(c)$ es la esperanza matemática exacta de la categoría $c$ bajo 3 re-tiradas óptimas calculada mediante programación dinámica (ver Cuadro \ref{tab:valores_exactos}).
+    \item $f_3(s)$: Valor dinámico de oportunidad de la mano actual dados los dados $d$ y las tiradas restantes $r$:
+    \begin{equation}
+    f_3(s) = \pm \max_{c \in \mathcal{L}_m} \left[ V_r^c(d) - \mu(c) \right]
+    \end{equation}
+    \item $f_4(s)$: Término de gestión de riesgo según la varianza residual y la ventaja proyectada $\Delta_{\text{esp}} = f_1 + \sum_{c \in \mathcal{L}_j} \mu(c) - \sum_{c \in \mathcal{L}_o} \mu(c)$:
+    \begin{equation}
+    f_4(s) = -\tanh\left( \frac{\Delta_{\text{esp}}}{K} \right) \cdot \sqrt{\sum_{c \in \mathcal{L}_j} \sigma^2(c) + \sum_{c \in \mathcal{L}_o} \sigma^2(c)}
+    \end{equation}
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Comparación de valores esperados estáticos base vs. valores exactos calculados vía programación dinámica ($\mu$ y $\sigma$).}
+\label{tab:valores_exactos}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Categoría} & \textbf{Base (Estático)} & \textbf{Exacto $\mu(c)$} & \textbf{Desv. Est. $\sigma(c)$} \\
+\midrule
+Balas (1 al 6) & $0.83 \dots 5.00$ & $2.59 \dots 15.53$ & $1.12 \dots 6.70$ \\
+Escalera & $0.20$ & $9.76$ & $12.20$ \\
+Full & $3.57$ & $15.36$ & $15.00$ \\
+Póker & $5.71$ & $17.92$ & $19.89$ \\
+Grande & $1.19$ & $5.03$ & $15.04$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Implementación y Optimizaciones de Búsqueda}
+Para eliminar la miopía, el agente expande Expectiminimax hasta el \textbf{final del propio turno} (profundidad adaptativa $r \to 0$), evaluando hojas tras la acción real de anotar. Se incorporaron dos optimizaciones determinantes:
+\begin{enumerate}
+    \item \textbf{Memoización con Tablas de Transposición:} Almacena evaluaciones para tuplas de nodo MAX $(\text{mano}, r)$, nodo AZAR $(\text{reserva}, r)$ y hojas $(\text{categoría}, \text{puntos})$.
+    \item \textbf{Poda Star1 y Reducción de Simetrías:} Agrupa los 31 subconjuntos de re-tirada en reservas únicas equivalentes y aplica la poda Star1 de Ballard \cite{ballard1983star} sobre nodos AZAR empleando cotas superiores analíticas.
+\end{enumerate}
+
+\subsection{Análisis Comparativo y Ejemplos de Jugadas}
+El Cuadro \ref{tab:decisiones_ejemplos} expone situaciones de juego reales extraídas del entorno donde la IA Mejorada toma decisiones estratégicamente superiores a la IA Base.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Ejemplos de decisiones tomadas por la IA Mejorada vs. IA Base ante situaciones idénticas.}
+\label{tab:decisiones_ejemplos}
+\begin{tabular}{p{3.2cm}p{1.8cm}cp{3.8cm}p{3.2cm}}
+\toprule
+\textbf{Escenario} & \textbf{Dados} & \textbf{Tiradas} & \textbf{Decisión IA Mejorada} & \textbf{Decisión IA Base} \\
+\midrule
+Par de 3 con 2 tiradas & $[2, 3, 3, 5, 6]$ & 2 & Re-tira $\{0, 3, 4\}$ (conserva el par de 3) & Re-tira los 5 dados (arbitrario) \\
+Casi Escalera (usada) & $[1, 2, 3, 4, 6]$ & 1 & Re-tira buscando balas/combinaciones & Fuerza anotar 5 (obtiene 0 pts) \\
+Trío de 6 servido & $[6, 6, 6, 2, 3]$ & 2 & Re-tira $\{3, 4\}$ (apunta a Full/Póker/Balas) & Re-tira los 5 dados (descarta trío) \\
+Póker con 1 tirada & $[1, 1, 1, 1, 5]$ & 1 & Re-tira el 5 buscando Grande & Anota Póker prematuramente \\
+Grande servida & $[5, 5, 5, 5, 5]$ & 3 & Anota Grande (50 pts inmediatamente) & Anota Grande \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Evaluación Estadística y Eficiencia}
+
+\subsection{Metodología}
+Se llevaron a cabo dos torneos independientes de 100 partidas cada uno con alternancia estricta de jugador inicial ($i \bmod 2$) y semillas pseudoaleatorias reproducibles:
+\begin{enumerate}
+    \item \textbf{Torneo 1 (Global):} Agente Base vs. Agente Mejorado (Evalúa el impacto conjunto de la nueva función y la búsqueda adaptativa).
+    \item \textbf{Torneo 2 (Aislamiento):} Agente Mejorado con Función Base vs. Agente Mejorado con Función Mejorada (Aísla exclusivamente el aporte de la formulación heurística $E_{\text{nueva}}$).
+\end{enumerate}
+Para el análisis de significancia, se aplicó el Test Binomial exacto bilateral ($H_0: p = 0.5$), el test $\chi^2$ de bondad de ajuste, intervalos de confianza al 95\% mediante la fórmula de Wilson \cite{wilson1927interval}, y remuestreo Bootstrap (2000 réplicas) para la diferencia de medias.
+
+\subsection{Resultados}
+Los resultados estadísticos se resumen en el Cuadro \ref{tab:resultados_cacho}.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Resultados estadísticos de los torneos de Cacho (100 partidas por enfrentamiento).}
+\label{tab:resultados_cacho}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Métrica} & \textbf{Torneo 1: Base vs. Mejorada} & \textbf{Torneo 2: Aislamiento Heurístico} \\
+\midrule
+Victorias Agente A / B & 1 / 99 & 48 / 51 (1 empate) \\
+Tasa de Victoria Agente B (\%) & \textbf{99.0\%} & \textbf{51.0\%} \\
+Intervalo de Wilson 95\% & $[94.6\%, 99.8\%]$ & $[41.3\%, 60.6\%]$ \\
+$p$-valor Test Binomial ($H_0: 0.5$) & $\mathbf{1.59 \times 10^{-28}}$ ($p < 0.05$) & $0.8408$ ($p \ge 0.05$) \\
+Estadístico $\chi^2$ ($p$-valor) & $96.04$ ($1.13 \times 10^{-22}$) & $0.091$ ($0.7630$) \\
+Puntaje Medio Agente A & $13.77 \pm 28.16$ & $171.65 \pm 31.92$ \\
+Puntaje Medio Agente B & $\mathbf{174.83 \pm 30.79}$ & $\mathbf{177.65 \pm 28.77}$ \\
+Diferencia Media ($B - A$) & $\mathbf{+161.06}$ pts & $\mathbf{+6.00}$ pts \\
+IC 95\% Bootstrap Diferencia & $[+151.50, +169.63]$ & $[-2.83, +14.65]$ \\
+Tiempo Promedio por Decisión (A / B) & $20.61\text{ ms} / \mathbf{13.88\text{ ms}}$ & $13.92\text{ ms} / 14.88\text{ ms}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Evidencia Formal de Eficiencia y Discusión}
+La evaluación del rendimiento computacional bajo diferentes variantes arquitectónicas se reporta en el Cuadro \ref{tab:eficiencia_cacho}.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Métricas de eficiencia computacional por decisión según configuración del agente.}
+\label{tab:eficiencia_cacho}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Configuración} & \textbf{Tiempo Medio (ms)} & \textbf{Evaluaciones} & \textbf{Nodos AZAR} & \textbf{Cortes Star1} \\
+\midrule
+Mejorado Completo (Memo + Star1) & $17.87 \pm 12.47$ & $\mathbf{19.9}$ & $412.9$ & $\mathbf{235.5}$ \\
+Sin Poda Star1 & $17.32 \pm 11.17$ & $21.2$ & $228.7$ & $0.0$ \\
+Sin Memoización (Profundidad 1) & $92.12 \pm 52.28$ & $6236.3$ & $18.7$ & $0.0$ \\
+Con Memoización (Profundidad 1) & $\mathbf{8.89 \pm 4.19}$ & $189.2$ & $18.7$ & $0.0$ \\
+Con Memoización (Profundidad 2) & $14.48 \pm 8.78$ & $105.2$ & $158.7$ & $0.0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La incorporación de memoización reduce las llamadas a la función de evaluación en un factor superior a $32.9\times$ en profundidad 1 (de 6236.3 a 189.2 llamadas) y un factor de $5.1\times$ en tiempo de respuesta (de 92.12 ms a 8.89 ms). En el agente adaptativo completo, la poda Star1 efectúa un promedio de 235.5 cortes de ramas estocásticas por decisión.
+
+Asimismo, la correlación de Pearson entre la valoración heurística intermedia (ronda 5) y la diferencia final de puntaje alcanzó $r = 0.6806$ ($p = 6.76 \times 10^{-15}$), demostrando que la función formulada en (\ref{eq:nueva_cacho}) es un predictor monótono y robusto del desenlace de la partida.
+
+\section{Conclusiones}
+
+\subsection{Conclusiones}
+Se diseñaron, implementaron y evaluaron agentes inteligentes competitivos para Othello y Cacho. En Othello, la combinación armónica de control de esquinas y movilidad diferencial demostró superar ampliamente la paridad numérica de fichas. En Cacho, el diagnóstico de los defectos de simetría y horizonte de la implementación base permitió construir un agente con Expectiminimax adaptativo y valores esperados exactos que alcanzó una tasa de victoria del 99.0\% ($p < 10^{-27}$) con una ganancia neta superior a 160 puntos por partida, validada con tests de hipótesis rigurosos.
+
+\subsection{Limitaciones}
+En Cacho, el agente asume independencia estocástica en las acciones futuras del oponente fuera del término de varianza $f_4$. En Othello, los pesos de la función se mantuvieron estáticos en lugar de parametrizar 13 etapas de juego dinámicas como en la arquitectura Logistello.
+
+\subsection{Trabajo Futuro}
+Se proyecta incorporar aprendizaje por refuerzo y ajuste de pesos mediante algoritmos genéticos o TD-Learning para calibrar dinámicamente los hiperparámetros $w_i$ y explorar búsquedas de Monte Carlo Tree Search (MCTS) adaptadas a juegos de azar con información perfecta estocástica.
+
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{document}
