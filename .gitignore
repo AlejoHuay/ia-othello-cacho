@@ -26,3 +26,5 @@ __pycache__/
 
 # Configuracion local del IDE
 .idea/
+*.bbl
+*.blg
