@@ -34,3 +34,14 @@ El commit inicial conserva su código antes de nuestras modificaciones.
 
 Cada integrante documentará las dependencias y los comandos
 de ejecución de su juego durante el desarrollo.
+
+### Cacho
+
+Ver `codigo/cacho/Cacho/README_CACHO.md`. Resumen:
+
+```bash
+cd codigo/cacho/Cacho
+pip install -r ../requirements.txt
+python main.py                              # Humano vs IA mejorada
+python -m unittest discover -s pruebas -v   # pruebas
+```

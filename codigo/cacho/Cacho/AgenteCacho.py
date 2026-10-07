@@ -140,7 +140,8 @@ class AgenteCacho(AgenteJugador):
         return (p[jugador] - p[1 - jugador])
 
     def testTerminal(self, estado):
-        return estado.tablero.get('ronda', 0) >= 10
+        # Corrección: el juego termina tras 10 anotaciones de CADA jugador
+        return estado.tablero.get('ronda', 0) >= 2 * len(CATEGORIAS)
 
     # --------- Función de evaluación para hojas ---------
 
