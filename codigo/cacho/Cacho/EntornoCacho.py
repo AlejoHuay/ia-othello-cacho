@@ -1,6 +1,9 @@
 from AgenteIA.Entorno import Entorno
 from AgenteIA.AgenteJugador import ElEstado
-from AgenteCacho import normalizar, puntuar
+from AgenteCacho import normalizar, puntuar, CATEGORIAS
+
+# Corrección: 10 rondas POR JUGADOR (antes terminaba con 10 anotaciones en total)
+TOTAL_ANOTACIONES = 2 * len(CATEGORIAS)
 from AgenteCachoHumano import AgenteCachoHumano
 import random
 
@@ -22,7 +25,7 @@ class EntornoCacho(Entorno):
 
     def _estado_inicial(self):
         tablero = {
-            'dados': (1, 1, 1, 1, 1),
+            'dados': self._tirar_5(),   # corrección: el primer turno también inicia con dados tirados
             'tiradas_restantes': 3,
             'puntajes': [0, 0],
             'usadas': [set(), set()],
@@ -149,7 +152,7 @@ class EntornoCacho(Entorno):
             self.get_agentes()[turno].set_acciones([])
 
             # ¿Fin del juego?
-            if tablero['ronda'] >= 10:
+            if tablero['ronda'] >= TOTAL_ANOTACIONES:
                 for a in self.get_agentes():
                     a.inhabilitar()
                 print("\n=== FIN DEL JUEGO ===")
@@ -186,4 +189,4 @@ class EntornoCacho(Entorno):
         return self.juegoActual.jugador == 1
 
     def es_fin(self):
-        return self.juegoActual.tablero['ronda'] >= 10
+        return self.juegoActual.tablero['ronda'] >= TOTAL_ANOTACIONES

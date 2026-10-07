@@ -173,7 +173,7 @@ class VistaCacho:
         titulo = self.f_titulo.render("🎲 CACHO - Expectiminimax", True, BLANCO)
         self.pantalla.blit(titulo, (30, 20))
 
-        ronda = min(tablero['ronda'] + 1, 10)
+        ronda = min(tablero['ronda'] // 2 + 1, 10)   # 'ronda' cuenta anotaciones de ambos
         ronda_txt = self.f_med.render(f"Ronda {ronda}/10", True, AMARILLO)
         self.pantalla.blit(ronda_txt, (30, 70))
 
