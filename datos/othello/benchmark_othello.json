@@ -1,0 +1,408 @@
+{
+  "referencia": "14. Evidencia Formal de Eficiencia, punto 3",
+  "partida_origen": "a000_d4_0_1_c1",
+  "codigo_sha256": {
+    "AgenteIA\\Agente.py": "60a5ca717da273d18356aa4bcc3fe0da3f3b0ae2cdf525de7f92cf28c9a18a23",
+    "AgenteIA\\AgenteJugador.py": "a61d61223cc9a0207ee7c1cf92e8c30075d2a36f326eff617d5fc6d0e95a96a3",
+    "AgentesEspecificos\\AgenteOthello.py": "0e3341bc060a39d5babae7ca4000012724d53752b25800529649413dce3318ca",
+    "evaluador.py": "cfc37a9a38a4f367c8369d926d9a559b34ee2faeb1b38ceb87d46f7bae0cb0dc",
+    "TableroOthello.py": "f3dd6af2b3434ec6025f5817e08c6736ee4a512d9cd6b1534ea52571e8f8ff09",
+    "torneo.py": "e1cec0c7e733d6ae90f8bf7b50811c6d30e817ea5f0f9a5aaad66a00f505c042"
+  },
+  "fecha_utc": "2026-10-09T11:47:54.231038+00:00",
+  "python": "3.13.15",
+  "numpy": "2.5.3",
+  "plataforma": "Windows-10-10.0.19045-SP0",
+  "posiciones": [
+    {
+      "ply": 0,
+      "jugador": 1,
+      "tablero": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "ply": 50,
+      "jugador": 1,
+      "tablero": [
+        [
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      ]
+    }
+  ],
+  "repeticiones": 1,
+  "profundidades": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "nota": "Las mismas matrices se miden a todas las profundidades; turno real conservado desde el registro. No son jugadas del torneo.",
+  "registros": [
+    {
+      "ply": 0,
+      "evaluacion": "fija",
+      "profundidad": 4,
+      "repeticion": 0,
+      "nodos_visitados": 138,
+      "nodos_evaluados": 87,
+      "hojas_terminales": 0,
+      "cortes": 31,
+      "pases": 0,
+      "tiempo_s": 0.02373049999999921,
+      "nodos_por_segundo": 3666.168011630724
+    },
+    {
+      "ply": 0,
+      "evaluacion": "fija",
+      "profundidad": 5,
+      "repeticion": 0,
+      "nodos_visitados": 569,
+      "nodos_evaluados": 428,
+      "hojas_terminales": 0,
+      "cortes": 60,
+      "pases": 0,
+      "tiempo_s": 0.11054070000000138,
+      "nodos_por_segundo": 3871.8770552384294
+    },
+    {
+      "ply": 0,
+      "evaluacion": "fija",
+      "profundidad": 6,
+      "repeticion": 0,
+      "nodos_visitados": 1761,
+      "nodos_evaluados": 1204,
+      "hojas_terminales": 0,
+      "cortes": 376,
+      "pases": 0,
+      "tiempo_s": 0.31816969999999856,
+      "nodos_por_segundo": 3784.1441218318573
+    },
+    {
+      "ply": 0,
+      "evaluacion": "fija",
+      "profundidad": 7,
+      "repeticion": 0,
+      "nodos_visitados": 7518,
+      "nodos_evaluados": 5646,
+      "hojas_terminales": 0,
+      "cortes": 1152,
+      "pases": 0,
+      "tiempo_s": 1.4856689000000074,
+      "nodos_por_segundo": 3800.3083998056172
+    },
+    {
+      "ply": 0,
+      "evaluacion": "etapas",
+      "profundidad": 4,
+      "repeticion": 0,
+      "nodos_visitados": 135,
+      "nodos_evaluados": 84,
+      "hojas_terminales": 0,
+      "cortes": 32,
+      "pases": 0,
+      "tiempo_s": 0.02417909999999779,
+      "nodos_por_segundo": 3474.0747174215617
+    },
+    {
+      "ply": 0,
+      "evaluacion": "etapas",
+      "profundidad": 5,
+      "repeticion": 0,
+      "nodos_visitados": 567,
+      "nodos_evaluados": 426,
+      "hojas_terminales": 0,
+      "cortes": 61,
+      "pases": 0,
+      "tiempo_s": 0.10969420000000696,
+      "nodos_por_segundo": 3883.523467967978
+    },
+    {
+      "ply": 0,
+      "evaluacion": "etapas",
+      "profundidad": 6,
+      "repeticion": 0,
+      "nodos_visitados": 1658,
+      "nodos_evaluados": 1116,
+      "hojas_terminales": 0,
+      "cortes": 372,
+      "pases": 0,
+      "tiempo_s": 0.3289378000000056,
+      "nodos_por_segundo": 3392.738687982898
+    },
+    {
+      "ply": 0,
+      "evaluacion": "etapas",
+      "profundidad": 7,
+      "repeticion": 0,
+      "nodos_visitados": 7271,
+      "nodos_evaluados": 5475,
+      "hojas_terminales": 0,
+      "cortes": 1097,
+      "pases": 0,
+      "tiempo_s": 1.4145423999999878,
+      "nodos_por_segundo": 3870.5096432599316
+    },
+    {
+      "ply": 50,
+      "evaluacion": "fija",
+      "profundidad": 4,
+      "repeticion": 0,
+      "nodos_visitados": 202,
+      "nodos_evaluados": 107,
+      "hojas_terminales": 0,
+      "cortes": 64,
+      "pases": 0,
+      "tiempo_s": 0.01736619999999789,
+      "nodos_por_segundo": 6161.3939721996185
+    },
+    {
+      "ply": 50,
+      "evaluacion": "fija",
+      "profundidad": 5,
+      "repeticion": 0,
+      "nodos_visitados": 634,
+      "nodos_evaluados": 414,
+      "hojas_terminales": 0,
+      "cortes": 112,
+      "pases": 3,
+      "tiempo_s": 0.06551209999997809,
+      "nodos_por_segundo": 6319.443278419383
+    },
+    {
+      "ply": 50,
+      "evaluacion": "fija",
+      "profundidad": 6,
+      "repeticion": 0,
+      "nodos_visitados": 1319,
+      "nodos_evaluados": 615,
+      "hojas_terminales": 0,
+      "cortes": 500,
+      "pases": 4,
+      "tiempo_s": 0.10168010000001004,
+      "nodos_por_segundo": 6048.381148326362
+    },
+    {
+      "ply": 50,
+      "evaluacion": "fija",
+      "profundidad": 7,
+      "repeticion": 0,
+      "nodos_visitados": 4016,
+      "nodos_evaluados": 2375,
+      "hojas_terminales": 0,
+      "cortes": 784,
+      "pases": 106,
+      "tiempo_s": 0.3613046000000111,
+      "nodos_por_segundo": 6573.400947565924
+    },
+    {
+      "ply": 50,
+      "evaluacion": "etapas",
+      "profundidad": 4,
+      "repeticion": 0,
+      "nodos_visitados": 271,
+      "nodos_evaluados": 159,
+      "hojas_terminales": 0,
+      "cortes": 74,
+      "pases": 0,
+      "tiempo_s": 0.02509170000001859,
+      "nodos_por_segundo": 6336.756776140404
+    },
+    {
+      "ply": 50,
+      "evaluacion": "etapas",
+      "profundidad": 5,
+      "repeticion": 0,
+      "nodos_visitados": 827,
+      "nodos_evaluados": 537,
+      "hojas_terminales": 0,
+      "cortes": 158,
+      "pases": 2,
+      "tiempo_s": 0.08130370000000653,
+      "nodos_por_segundo": 6604.865461226941
+    },
+    {
+      "ply": 50,
+      "evaluacion": "etapas",
+      "profundidad": 6,
+      "repeticion": 0,
+      "nodos_visitados": 1488,
+      "nodos_evaluados": 756,
+      "hojas_terminales": 0,
+      "cortes": 501,
+      "pases": 4,
+      "tiempo_s": 0.12297280000001365,
+      "nodos_por_segundo": 6147.700955007254
+    },
+    {
+      "ply": 50,
+      "evaluacion": "etapas",
+      "profundidad": 7,
+      "repeticion": 0,
+      "nodos_visitados": 3509,
+      "nodos_evaluados": 2047,
+      "hojas_terminales": 0,
+      "cortes": 729,
+      "pases": 73,
+      "tiempo_s": 0.34370769999998174,
+      "nodos_por_segundo": 5955.641959723651
+    }
+  ]
+}
