@@ -5,6 +5,8 @@ import json
 import numpy as np
 import time
 import traceback
+from AgentesEspecificos.AgenteOthello import AgenteOthello
+from AgenteIA.AgenteJugador import ElEstado
 
 
 class GameServer:
@@ -15,7 +17,10 @@ class GameServer:
         self.clients = []
         self.client_info = []
         self.running = False
-        self.lock = threading.Lock()
+        self.lock = threading.RLock()
+        self.send_lock = threading.Lock()
+        self.game_started = False
+        self.motor = AgenteOthello(1)
         self.reset_game()
 
     def reset_game(self):
@@ -31,61 +36,30 @@ class GameServer:
         print("🎮 Juego reiniciado")
 
     def get_valid_moves(self, player=None):
-        if player is None:
-            player = self.current_player
-        valid_moves = []
-        for row in range(8):
-            for col in range(8):
-                if self.is_valid_move(row, col, player):
-                    valid_moves.append((row, col))
-        return valid_moves
+        return self.motor._get_valid_moves(self.board, self.current_player if player is None else player)
 
     def is_valid_move(self, row, col, player):
-        if self.board[row][col] != 0:
+        if type(row) is not int or type(col) is not int or player not in (1, 2):
             return False
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        opponent = 3 - player
-        for dr, dc in directions:
-            r, c = row + dr, col + dc
-            found_opponent = False
-            while 0 <= r < 8 and 0 <= c < 8 and self.board[r][c] == opponent:
-                found_opponent = True
-                r += dr
-                c += dc
-            if found_opponent and 0 <= r < 8 and 0 <= c < 8 and self.board[r][c] == player:
-                return True
-        return False
+        return self.motor._is_valid_move(self.board, player, row, col)
 
     def make_move(self, row, col, player):
-        if player != self.current_player:
-            return False, "No es tu turno"
-        if not self.is_valid_move(row, col, player):
-            return False, "Movimiento inválido"
-
-        self.board[row][col] = player
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        opponent = 3 - player
-        flipped = 0
-
-        for dr, dc in directions:
-            r, c = row + dr, col + dc
-            to_flip = []
-            while 0 <= r < 8 and 0 <= c < 8 and self.board[r][c] == opponent:
-                to_flip.append((r, c))
-                r += dr
-                c += dc
-            if 0 <= r < 8 and 0 <= c < 8 and self.board[r][c] == player:
-                for flip_row, flip_col in to_flip:
-                    self.board[flip_row][flip_col] = player
-                    flipped += 1
-
-        self.current_player = 3 - self.current_player
-        if not self.get_valid_moves():
-            self.current_player = 3 - self.current_player
-            if not self.get_valid_moves():
-                self.game_over = True
+        # 3.1. Reglas Fundamentales: un único motor (el agente del docente).
+        with self.lock:
+            if self.game_over:
+                return False, "El juego terminó"
+            if player != self.current_player:
+                return False, "No es tu turno"
+            if not self.is_valid_move(row, col, player):
+                return False, "Movimiento inválido"
+            estado = ElEstado(player, 0, self.board, self.get_valid_moves())
+            siguiente = self.motor.getResultado(estado, (row, col))
+            self.board = siguiente.tablero
+            self.current_player = siguiente.jugador
+            self.game_over = self.motor.testTerminal(siguiente)
+            if self.game_over:
                 self.determine_winner()
-        return True, "Movimiento exitoso"
+            return True, "Movimiento exitoso"
 
     def determine_winner(self):
         black_count = np.sum(self.board == 1)
@@ -133,7 +107,8 @@ class GameServer:
                 raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
             message_str = json.dumps(message, default=numpy_serializer) + '\n'
-            client_socket.send(message_str.encode('utf-8'))
+            with self.send_lock:
+                client_socket.sendall(message_str.encode('utf-8'))
             print(f"📤 Enviado a cliente: {message['type']}")
             return True
         except Exception as e:
@@ -160,6 +135,11 @@ class GameServer:
         """Inicia el juego si hay exactamente 2 jugadores conectados"""
         with self.lock:
             active_clients = [c for c in self.clients if c is not None]
+            preparados = sum(bool(info and info.get('ready')) for info in self.client_info)
+            if self.game_started or len(active_clients) != 2 or preparados != 2:
+                return False
+            self.reset_game()
+            self.game_started = True
 
         print(f"🔍 Verificando jugadores: {len(active_clients)}/2 conectados")
 
@@ -167,8 +147,6 @@ class GameServer:
             print("🎉 ¡Ambos jugadores conectados! Iniciando juego...")
 
             # Reiniciar el juego para empezar desde cero
-            self.reset_game()
-
             game_state = self.get_game_state()
             start_message = {
                 'type': 'game_start',
@@ -221,6 +199,8 @@ class GameServer:
                 'client_id': int(client_id)  # Convertir a int nativo
             }
             self.send_to_client(client_socket, welcome_msg)
+            with self.lock:
+                self.client_info[client_id]['ready'] = True
 
             # Pequeña pausa para asegurar que el cliente procesó la bienvenida
             time.sleep(0.3)
@@ -277,6 +257,7 @@ class GameServer:
         finally:
             print(f"👋 Cliente {client_id} desconectado")
             with self.lock:
+                self.game_started = False
                 if client_id < len(self.clients):
                     self.clients[client_id] = None
                 if client_id < len(self.client_info):
@@ -292,22 +273,24 @@ class GameServer:
                 'type': 'opponent_disconnected',
                 'message': 'El oponente se ha desconectado'
             }
-            self.broadcast_to_all(disconnect_msg)
+            if self.running:
+                self.broadcast_to_all(disconnect_msg)
 
     def process_client_message(self, client_socket, client_id, player_color, message):
         msg_type = message.get('type')
 
-        if msg_type == 'move':
+        if msg_type == 'move' and self.game_started:
             row, col = message.get('row'), message.get('col')
             if row is not None and col is not None:
                 print(f"🎯 Cliente {client_id} intenta mover a ({row}, {col})")
-                success, msg = self.make_move(row, col, player_color)
-                response = {'type': 'move_response', 'success': success, 'message': msg}
-                self.send_to_client(client_socket, response)
-                if success:
-                    print("✅ Movimiento exitoso, actualizando juego...")
-                    update_msg = {'type': 'game_update', 'game_state': self.get_game_state()}
-                    self.broadcast_to_all(update_msg)
+                with self.lock:
+                    success, msg = self.make_move(row, col, player_color)
+                    response = {'type': 'move_response', 'success': success, 'message': msg}
+                    self.send_to_client(client_socket, response)
+                    if success:
+                        print("✅ Movimiento exitoso, actualizando juego...")
+                        update_msg = {'type': 'game_update', 'game_state': self.get_game_state()}
+                        self.broadcast_to_all(update_msg)
 
     def start(self):
         try:
@@ -329,6 +312,10 @@ class GameServer:
                     print(f"🔗 Nueva conexión de {client_address}")
 
                     with self.lock:
+                        if sum(c is not None for c in self.clients) >= 2:
+                            self.send_to_client(client_socket, {"type": "error", "message": "Servidor completo"})
+                            client_socket.close()
+                            continue
                         # Buscar slot vacío
                         slot_index = None
                         for i in range(len(self.clients)):
