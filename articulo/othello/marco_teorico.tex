@@ -1,0 +1,8 @@
+% 3. Contexto del Juego; 3.1. Reglas Fundamentales; 15. Estructura Requerida (Formato LATEX).
+\subsection{Othello: reglas, representación y búsqueda}
+\textit{Guía: 3. Contexto del Juego; 3.1. Reglas Fundamentales; 2. Objetivos de Aprendizaje, O2.}
+Othello es determinista, competitivo y de información perfecta. En un tablero $8\times8$, una colocación legal flanquea y voltea fichas adversarias en alguna de ocho direcciones. Negras inicia; un jugador sin acciones pasa y la partida termina cuando ninguno puede mover. La utilidad depende del conteo final, incluido el empate. El estado contiene tablero, jugador de turno y movimientos legales.
+
+La búsqueda simula transiciones sin alterar el estado real. Minimax maximiza la utilidad del jugador raíz ante un rival que la minimiza. Alpha-Beta omite ramas que no pueden cambiar la decisión. Con profundidad $d$ y ramificación $b$, el peor caso es $O(b^d)$; en árboles regulares alternados, el orden ideal permite $O(b^{d/2})$ para Alpha-Beta, sin garantizar esa reducción en toda posición real. El corte de profundidad exige valorar posiciones no terminales, como explica el material docente de adversarios \cite{othello_diapo_adversarios}.
+
+IAGO constituye un antecedente de análisis del dominio y evaluación experimental \cite{rosenbloom1982iob}. BILL combina conocimiento de evaluación y técnicas de búsqueda \cite{lee1990bill}. Buro estudia construcción de características y ajuste de evaluaciones \cite{buro1999logistello}. Estos trabajos motivan considerar varios rasgos; no proporcionan evidencia de superioridad para nuestros pesos concretos.

@@ -1,0 +1,53 @@
+% 4. Formulación de la Función de Evaluación; 5. Análisis Crítico Requerido;
+% 7. Descripción de Funciones en el Artículo; 20.1. Criterio 1: Función de Evaluación Othello (20 pts).
+\section{Función de Evaluación para Othello}
+\textit{Guía: 4. Formulación de la Función de Evaluación; 7. Descripción de Funciones en el Artículo; 20.1. Criterio 1: Función de Evaluación Othello (20 pts).}
+\subsection{Formulación y componentes}
+Sean $j$ el jugador raíz y $o=3-j$. Para cada color, $N$ cuenta fichas, $C$ esquinas, $M$ movimientos legales y $F$ fichas frontera: ocupadas con al menos un vecino vacío. Definimos $R(a,b)=(a-b)/(a+b)$, con $R(0,0)=0$, y
+\begin{equation}
+ D=\frac{N_j-N_o}{64},\quad E=\frac{C_j-C_o}{4},\quad
+ L=R(M_j,M_o),\quad Q=R(F_o,F_j).
+ \label{eq:othello_componentes}
+\end{equation}
+Los cuatro componentes pertenecen a $[-1,1]$. La frontera aproxima exposición, no estabilidad exacta. Las evaluaciones son
+\begin{equation}
+ H_{\mathrm{fija}}=10D+40E+35L+15Q,\qquad
+ H_{\mathrm{etapas}}=\boldsymbol{w}(t)\cdot(D,E,L,Q),
+ \label{eq:othello_dos_funciones}
+\end{equation}
+con $t=N_j+N_o$. Los pesos aparecen en el Cuadro~\ref{tab:othello_pesos}.
+\begin{table}[htbp]
+\centering\small
+\caption{Pesos de diseño definidos antes del piloto; no ajustados ni demostrados óptimos.}
+\label{tab:othello_pesos}
+\begin{tabular}{llrrrr}
+\toprule
+Versión & Condición & $D$ & $E$ & $L$ & $Q$\\
+\midrule
+Fija & Cualquier $t$ & 10 & 40 & 35 & 15\\
+Etapas & $t<20$ & 0 & 35 & 45 & 20\\
+Etapas & $20\leq t<45$ & 10 & 40 & 35 & 15\\
+Etapas & $t\geq45$ & 55 & 30 & 10 & 5\\
+\bottomrule
+\end{tabular}
+\end{table}
+Se priorizan esquinas por su permanencia y movilidad por las opciones disponibles; se penaliza exposición propia y se aumenta el conteo al final. Los umbrales y pesos son hipótesis de ingeniería. Hay al menos tres componentes activos por etapa, pesos en $[0,55]$ y suma 100; por tanto $|H|\leq100$. Esta es la interpretación acordada de ``valores estáticos restringidos'', cuyo intervalo no define la guía. Se cumple $H(s,j)=-H(s,o)$; no se interpreta como probabilidad.
+
+\subsection{Implementación}
+Se reutilizan las clases y reglas del docente. Una unidad de profundidad es una ficha colocada; el pase consume cero. MAX/MIN depende del jugador del estado, conservando la perspectiva raíz. La utilidad terminal se comprueba antes del corte:
+\begin{equation}
+ U(s,j)=\begin{cases}0,&\Delta=0,\\
+ \operatorname{sgn}(\Delta)(10000+|\Delta|),&\Delta\neq0,
+ \end{cases}\quad\Delta=N_j-N_o.
+ \label{eq:othello_terminal}
+\end{equation}
+Así una victoria domina cualquier hoja heurística. El algoritmo de evaluación cuenta $N,C,M,F$, normaliza según~\eqref{eq:othello_componentes}, selecciona pesos y calcula~\eqref{eq:othello_dos_funciones}. El código íntegro está en \texttt{evaluador.py}. Para un tablero generalizado $n\times n$, conteo y frontera cuestan $O(n^2)$, esquinas $O(1)$ y movilidad $O(n^3)$ por los rayos; ambas evaluaciones cuestan $O(n^3)$ y memoria auxiliar $O(n^2)$. El tablero real es siempre $8\times8$.
+
+\subsection{Análisis crítico}
+\textit{Guía: 5. Análisis Crítico Requerido, puntos 1--4.}
+\begin{enumerate}
+\item Un valor fijo por coordenada ignora líneas y relaciones entre fichas. Maximizar capturas inmediatas puede abrir opciones al rival: la mejora local del conteo no garantiza ventaja final. Nuestras funciones combinan rasgos, pero sus pesos manuales siguen siendo una limitación.
+\item La movilidad cuenta alternativas, aunque no distingue su calidad. La guía menciona \emph{sandwich squares} sin definición operativa. Su observación sobre pesos negativos advierte que un patrón aparentemente favorable puede facilitar respuestas rivales; un signo aprendido depende de otros rasgos y del contexto. No se identifica ese término con todas las casillas X/C ni se inventa una penalización. En nuestra función, $Q$ penaliza explícitamente frontera propia; no prueba estabilidad.
+\item Los pesos por etapa expresan la transición de flexibilidad a conteo final. Las funciones coinciden en medio juego, por lo que se contrasta el cambio en apertura/final. Los umbrales introducen discontinuidades. Las 13 etapas atribuidas a Logistello en la guía son un antecedente, no una implementación ni resultado nuestro \cite{othello_guia}.
+\item La movilidad domina el costo por hoja. Una evaluación costosa puede mejorar decisiones y reducir la profundidad asequible. La cifra de aproximadamente 15\% sobre paridad en Logistello procede de la guía, no de nuestras mediciones. El conteo $D$ no es paridad regional. Como ambas propuestas computan los mismos rasgos, este contraste no aísla el beneficio de añadir cada componente; una ablación futura sería necesaria.
+\end{enumerate}
