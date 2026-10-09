@@ -1,19 +1,24 @@
 import numpy as np
 from AgenteIA.AgenteJugador import AgenteJugador, ElEstado
+from evaluador import evaluar, VERSIONES
 
 class AgenteOthello(AgenteJugador):
 
-    def __init__(self, altura=3):
+    def __init__(self, altura=4, evaluacion="fija", tecnica="podaalfabeta"):
         super().__init__(altura)
         self.BOARD_SIZE = 8
+        if evaluacion not in VERSIONES + ("docente",):
+            raise ValueError("Evaluaci?n desconocida")
+        self.evaluacion = evaluacion
+        self.tecnica = tecnica
 
     def jugadas(self, estado):
         """Devuelve los movimientos válidos desde el estado actual."""
-        return estado.movidas
+        return sorted(estado.movidas, key=lambda m: (m not in ((0,0),(0,7),(7,0),(7,7)), m))
 
     def testTerminal(self, estado):
         """Un estado es terminal si no hay movimientos válidos para ningún jugador."""
-        return not estado.movidas
+        return not estado.movidas and not self._get_valid_moves(estado.tablero, 3 - estado.jugador)
 
     def get_utilidad(self, estado, jugador):
         """Calcula la utilidad del estado final (diferencia de fichas)."""
@@ -24,9 +29,9 @@ class AgenteOthello(AgenteJugador):
         score_oponente = np.sum(estado.tablero == (3 - jugador))
         
         if score_jugador > score_oponente:
-            return 100  # Victoria
+            return 10000 + int(score_jugador - score_oponente)  # Victoria domina la heur?stica
         elif score_oponente > score_jugador:
-            return -100 # Derrota
+            return -10000 + int(score_jugador - score_oponente) # Derrota
         else:
             return 0    # Empate
 
@@ -35,7 +40,11 @@ class AgenteOthello(AgenteJugador):
         Devuelve el nuevo estado del juego después de realizar una jugada.
         La lógica está adaptada de la clase OthelloGame.
         """
-        if jugada not in self.jugadas(estado):
+        if jugada is None and not estado.movidas:
+            otro = 3 - estado.jugador
+            return ElEstado(otro, 0, np.copy(estado.tablero),
+                            self._get_valid_moves(estado.tablero, otro))
+        if jugada not in estado.movidas:
             return estado # Jugada inválida, no cambia el estado
 
         nuevo_tablero = np.copy(estado.tablero)
@@ -78,6 +87,11 @@ class AgenteOthello(AgenteJugador):
         )
 
     def funcion_evaluacion(self, estado):
+        if self.evaluacion == "docente":
+            return self._evaluacion_docente(estado)
+        return evaluar(estado.tablero, self.estado.jugador, self.evaluacion, self._get_valid_moves)
+
+    def _evaluacion_docente(self, estado):
         """
         Función heurística para evaluar un estado no terminal.
         Considera la diferencia de fichas, el control de las esquinas y la movilidad.
@@ -108,6 +122,8 @@ class AgenteOthello(AgenteJugador):
 
     # --- Métodos de ayuda internos ---
     def _is_valid_move(self, board, player, row, col):
+        if not (0 <= row < self.BOARD_SIZE and 0 <= col < self.BOARD_SIZE):
+            return False
         if board[row, col] != 0:
             return False
         
