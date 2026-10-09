@@ -1,0 +1,19 @@
+% 6. Descripción de la Competencia; 6.1. Estructura del Torneo; 12.1. Para Othello.
+\section{Competencia de IAs en Othello}
+\textit{Guía: 6. Descripción de la Competencia; 6.1. Estructura del Torneo; 12.1. Para Othello.}
+\subsection{Agentes y metodología}
+Se enfrentan \texttt{fija} y \texttt{etapas} con la misma búsqueda Alpha-Beta. El plan acordado comprende 13 aperturas de ocho colocaciones, dos asignaciones de color y profundidades 4, 5, 6 y 7: 104 partidas. Las aperturas se generan eligiendo acciones legales con semilla 20261008, rechazando equivalencias por simetría. Los desempates de búsqueda son deterministas; se exploran primero esquinas y luego coordenadas. Puntuación: victoria 1, empate 0.5, derrota 0. Ambos rivales usan la misma profundidad en cada partida.
+
+Por decisión del usuario, la ejecución se limita al piloto de una apertura, con ocho partidas; las 96 restantes quedan pendientes. El hardware, versiones y huellas de código están en el manifiesto del experimento. Los tiempos miden búsqueda e instrumentación, excluyen apertura, red, dibujo y escritura. Un nodo evaluado es una hoja terminal o una hoja de corte, no todo nodo visitado. Se conserva un registro por movimiento y evaluaciones intermedias desde negras.
+
+\subsection{Resultados y discusión}
+\input{../datos/othello/analisis/tabla_othello.tex}
+\input{../datos/othello/analisis/resumen_resultados_othello.tex}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.48\linewidth]{../datos/othello/analisis/victorias_profundidad_othello.pdf}
+\includegraphics[width=.48\linewidth]{../datos/othello/analisis/tiempo_profundidad_othello.pdf}
+\caption{Piloto interno: victorias y tiempo medio por movimiento frente a profundidad. Cada nivel usa ambos colores de una apertura; no son réplicas independientes.}
+\label{fig:othello_profundidad}
+\end{figure}
+El cliente automático permite conectarse al servidor del docente, y el torneo acepta adaptadores de otros grupos. No se recibieron agentes externos; su competencia está pendiente y no se sustituye por estos enfrentamientos internos.

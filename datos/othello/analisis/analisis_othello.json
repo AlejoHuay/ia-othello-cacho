@@ -1,0 +1,974 @@
+{
+  "referencia": "12.1. Para Othello; 13. Métodos Estadísticos Requeridos; 14. Evidencia Formal de Eficiencia",
+  "tabla": [
+    {
+      "agente": "etapas",
+      "profundidad": 4,
+      "partidas": 2,
+      "victorias": 1,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": 0,
+      "puntos": 1.0,
+      "tiempo_total_s": 13.956013000002713,
+      "movimientos": 52,
+      "nodos_evaluados": 73472,
+      "nodos_completos": true,
+      "diferencia_media": 0.0,
+      "tiempo_medio_s": 0.26838486538466755,
+      "nodos_por_segundo": 5264.5408111891065,
+      "ic_wilson_descriptivo_partidas": [
+        0.09453120573423074,
+        0.9054687942657693
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 4,
+      "partidas": 2,
+      "victorias": 1,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": 0,
+      "puntos": 1.0,
+      "tiempo_total_s": 14.356995599955553,
+      "movimientos": 52,
+      "nodos_evaluados": 75582,
+      "nodos_completos": true,
+      "diferencia_media": 0.0,
+      "tiempo_medio_s": 0.2760960692299145,
+      "nodos_por_segundo": 5264.471906659495,
+      "ic_wilson_descriptivo_partidas": [
+        0.09453120573423074,
+        0.9054687942657693
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 5,
+      "partidas": 2,
+      "victorias": 0,
+      "derrotas": 2,
+      "empates": 0,
+      "diferencia_total": -50,
+      "puntos": 0.0,
+      "tiempo_total_s": 41.725657799994224,
+      "movimientos": 50,
+      "nodos_evaluados": 207848,
+      "nodos_completos": true,
+      "diferencia_media": -25.0,
+      "tiempo_medio_s": 0.8345131559998845,
+      "nodos_por_segundo": 4981.299539872773,
+      "ic_wilson_descriptivo_partidas": [
+        0.0,
+        0.6576197724933468
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 5,
+      "partidas": 2,
+      "victorias": 2,
+      "derrotas": 0,
+      "empates": 0,
+      "diferencia_total": 50,
+      "puntos": 2.0,
+      "tiempo_total_s": 40.74640600001294,
+      "movimientos": 54,
+      "nodos_evaluados": 205832,
+      "nodos_completos": true,
+      "diferencia_media": 25.0,
+      "tiempo_medio_s": 0.7545630740743137,
+      "nodos_por_segundo": 5051.537551555703,
+      "ic_wilson_descriptivo_partidas": [
+        0.3423802275066532,
+        1.0
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 6,
+      "partidas": 2,
+      "victorias": 0,
+      "derrotas": 2,
+      "empates": 0,
+      "diferencia_total": -38,
+      "puntos": 0.0,
+      "tiempo_total_s": 232.76103589997365,
+      "movimientos": 51,
+      "nodos_evaluados": 1161726,
+      "nodos_completos": true,
+      "diferencia_media": -19.0,
+      "tiempo_medio_s": 4.56394188039164,
+      "nodos_por_segundo": 4991.067321504955,
+      "ic_wilson_descriptivo_partidas": [
+        0.0,
+        0.6576197724933468
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 6,
+      "partidas": 2,
+      "victorias": 2,
+      "derrotas": 0,
+      "empates": 0,
+      "diferencia_total": 38,
+      "puntos": 2.0,
+      "tiempo_total_s": 216.50952150004014,
+      "movimientos": 53,
+      "nodos_evaluados": 1079997,
+      "nodos_completos": true,
+      "diferencia_media": 19.0,
+      "tiempo_medio_s": 4.085085311321512,
+      "nodos_por_segundo": 4988.219421101994,
+      "ic_wilson_descriptivo_partidas": [
+        0.3423802275066532,
+        1.0
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 7,
+      "partidas": 2,
+      "victorias": 1,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": -2,
+      "puntos": 1.0,
+      "tiempo_total_s": 1207.9583076000126,
+      "movimientos": 52,
+      "nodos_evaluados": 6206466,
+      "nodos_completos": true,
+      "diferencia_media": -1.0,
+      "tiempo_medio_s": 23.229967453846395,
+      "nodos_por_segundo": 5137.980310207136,
+      "ic_wilson_descriptivo_partidas": [
+        0.09453120573423074,
+        0.9054687942657693
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 7,
+      "partidas": 2,
+      "victorias": 1,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": 2,
+      "puntos": 1.0,
+      "tiempo_total_s": 1202.4589905999528,
+      "movimientos": 52,
+      "nodos_evaluados": 6194945,
+      "nodos_completos": true,
+      "diferencia_media": 1.0,
+      "tiempo_medio_s": 23.1242113576914,
+      "nodos_por_segundo": 5151.897111193043,
+      "ic_wilson_descriptivo_partidas": [
+        0.09453120573423074,
+        0.9054687942657693
+      ]
+    }
+  ],
+  "comparaciones": [
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "n_bloques": 1,
+      "bloques_ganados": 0,
+      "bloques_perdidos": 0,
+      "bloques_empatados": 1,
+      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
+      "alternativa": "bilateral",
+      "p_binomial": null,
+      "ic_wilson_bloques_decisivos": null,
+      "ic_bootstrap_diferencia": null,
+      "ic_bootstrap_winrate": null,
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello."
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "n_bloques": 1,
+      "bloques_ganados": 1,
+      "bloques_perdidos": 0,
+      "bloques_empatados": 0,
+      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
+      "alternativa": "bilateral",
+      "p_binomial": 1.0,
+      "ic_wilson_bloques_decisivos": [
+        0.20654931437723745,
+        1.0
+      ],
+      "ic_bootstrap_diferencia": null,
+      "ic_bootstrap_winrate": null,
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
+      "p_holm": 1.0,
+      "interpretacion": "No se rechaza H0; no demuestra igualdad"
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "n_bloques": 1,
+      "bloques_ganados": 1,
+      "bloques_perdidos": 0,
+      "bloques_empatados": 0,
+      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
+      "alternativa": "bilateral",
+      "p_binomial": 1.0,
+      "ic_wilson_bloques_decisivos": [
+        0.20654931437723745,
+        1.0
+      ],
+      "ic_bootstrap_diferencia": null,
+      "ic_bootstrap_winrate": null,
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
+      "p_holm": 1.0,
+      "interpretacion": "No se rechaza H0; no demuestra igualdad"
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "n_bloques": 1,
+      "bloques_ganados": 0,
+      "bloques_perdidos": 0,
+      "bloques_empatados": 1,
+      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
+      "alternativa": "bilateral",
+      "p_binomial": null,
+      "ic_wilson_bloques_decisivos": null,
+      "ic_bootstrap_diferencia": null,
+      "ic_bootstrap_winrate": null,
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello."
+    }
+  ],
+  "correlaciones": [
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 20,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 20,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 30,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 30,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 40,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 40,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 50,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 4,
+      "ply": 50,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 20,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 20,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 30,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 30,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 40,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 40,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 50,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 50,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 20,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 20,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 30,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 30,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 40,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 40,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 50,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 6,
+      "ply": 50,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 20,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 20,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 30,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 30,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 40,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 40,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 50,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 7,
+      "ply": 50,
+      "evaluacion": "fija",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 1,
+      "exploratorio": true,
+      "pearson": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      },
+      "spearman": {
+        "r": null,
+        "p": null,
+        "ic95": null,
+        "motivo": "Menos de 3 bloques o varianza nula"
+      }
+    }
+  ],
+  "chi_cuadrado": {
+    "aplicable": false,
+    "motivo": "Torneo emparejado: filas por agente comparten partidas; no hay muestras independientes de múltiples agentes contra un rival común."
+  },
+  "ejecutadas": 8,
+  "planificadas": 104,
+  "completo": false,
+  "configuracion_estadistica": {
+    "numpy": "2.5.3",
+    "semilla": 20261008,
+    "bootstrap_replicas": 5000,
+    "correlacion_replicas": 2000,
+    "alpha": 0.05,
+    "binomial": "bilateral",
+    "ajuste": "Holm"
+  },
+  "advertencia": "Condiciones emparejadas por apertura; no contar repeticiones deterministas como independientes. Curva a igual profundidad para ambos, no contra rival de profundidad fija.",
+  "figuras": "Generadas a partir de partidas completas; niveles ausentes no se interpolan",
+  "benchmark": "benchmark_othello.json"
+}

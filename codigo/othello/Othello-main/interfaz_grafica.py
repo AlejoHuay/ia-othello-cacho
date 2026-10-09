@@ -4,7 +4,7 @@ import sys
 import numpy as np
 
 # Constantes de la Interfaz
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 800, 860
 BOARD_SIZE = 8
 CELL_SIZE = WIDTH // BOARD_SIZE
 DOT_RADIUS = CELL_SIZE // 2 - 5
@@ -84,7 +84,7 @@ class InterfazJuego:
     def _draw_grid(self):
         for i in range(BOARD_SIZE + 1):
             pygame.draw.line(self.screen, BLACK, (0, i * CELL_SIZE), (WIDTH, i * CELL_SIZE), 2)
-            pygame.draw.line(self.screen, BLACK, (i * CELL_SIZE, 0), (i * CELL_SIZE, HEIGHT), 2)
+            pygame.draw.line(self.screen, BLACK, (i * CELL_SIZE, 0), (i * CELL_SIZE, WIDTH), 2)
 
     def _draw_pieces(self, board):
         for r in range(BOARD_SIZE):
@@ -131,7 +131,7 @@ class InterfazJuego:
             color = GREEN if is_my_turn else RED
 
         turn_surface = self.big_font.render(turn_text, True, color)
-        self.screen.blit(turn_surface, (WIDTH // 2 - turn_surface.get_width() // 2, HEIGHT - 50))
+        self.screen.blit(turn_surface, (WIDTH - turn_surface.get_width() - 15, HEIGHT - 50))
         
     def get_clicked_cell(self, pos):
         col = pos[0] // CELL_SIZE

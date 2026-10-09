@@ -1,0 +1,3 @@
+-r requirements.txt
+# Sólo figuras exportables; no participa en el agente ni en el torneo.
+matplotlib>=3.9

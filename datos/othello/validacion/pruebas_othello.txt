@@ -1,0 +1,32 @@
+19. Distribución de Puntos, criterios 2 y 7; 3.1. Reglas Fundamentales; 20.3. Criterio 5: Análisis Estadístico (15 pts)
+Copia temporal de las fuentes entregables, sin cachés ni archivos de resultados.
+INICIO a000_d1_0_1_c1
+FIN a000_d1_0_1_c1 etapas 0.11 s
+INICIO a000_d1_0_1_c2
+FIN a000_d1_0_1_c2 fija 0.11 s
+Plan completo
+Plan completo
+test_binomial (test_estadistica.Estadistica.test_binomial) ... ok
+test_bootstrap (test_estadistica.Estadistica.test_bootstrap) ... ok
+test_chi (test_estadistica.Estadistica.test_chi) ... ok
+test_correlacion (test_estadistica.Estadistica.test_correlacion) ... ok
+test_holm (test_estadistica.Estadistica.test_holm) ... ok
+test_wilson (test_estadistica.Estadistica.test_wilson) ... ok
+test_aperturas_reproducibles (test_othello.Busqueda.test_aperturas_reproducibles) ... ok
+test_heuristicas_acotadas_antisimetria (test_othello.Busqueda.test_heuristicas_acotadas_antisimetria) ... ok
+test_minimax_alphabeta_y_pases (test_othello.Busqueda.test_minimax_alphabeta_y_pases) ... ok
+test_referencia_independiente_turnos (test_othello.Busqueda.test_referencia_independiente_turnos) ... ok
+test_entorno_despacha_por_turno (test_othello.Reglas.test_entorno_despacha_por_turno) ... ok
+test_ilegales_servidor (test_othello.Reglas.test_ilegales_servidor) ... ok
+test_inicio_y_copia (test_othello.Reglas.test_inicio_y_copia) ... ok
+test_ocho_direcciones (test_othello.Reglas.test_ocho_direcciones) ... ok
+test_partidas_completas (test_othello.Reglas.test_partidas_completas) ... ok
+test_pase_y_final (test_othello.Reglas.test_pase_y_final) ... ok
+test_terminal_domina_esquinas (test_othello.Reglas.test_terminal_domina_esquinas) ... ok
+test_dos_agentes_red_y_tercer_cliente (test_red.Red.test_dos_agentes_red_y_tercer_cliente) ... ok
+test_partidas_exportacion_reanudacion (test_registros.Registros.test_partidas_exportacion_reanudacion) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.222s
+
+OK

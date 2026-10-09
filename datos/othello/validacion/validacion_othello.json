@@ -1,0 +1,39 @@
+{
+  "referencias": [
+    "3.1. Reglas Fundamentales",
+    "19. Distribución de Puntos",
+    "20.1. Criterio 1: Función de Evaluación Othello (20 pts)",
+    "20.3. Criterio 5: Análisis Estadístico (15 pts)",
+    "22. Formato de Datos"
+  ],
+  "fecha_revision": "2026-10-09 (America/La_Paz)",
+  "rama": "feature/othello",
+  "pruebas_correctas": 19,
+  "partidas_reproducidas": 8,
+  "partidas_pendientes": 96,
+  "decisiones_benchmark": 16,
+  "csv_principal": "datos/resultados_othello.csv",
+  "csv_verificado_con_originales": true,
+  "progresos_incompletos": 0,
+  "latex": "Compilación aislada correcta, cinco páginas renderizadas y revisadas; artículo conjunto pendiente",
+  "interfaz": "Render Pygame revisado; no sesión manual de juego completo",
+  "cambios_versionados": [
+    "codigo/othello/Othello-main/AgenteIA/AgenteJugador.py",
+    "codigo/othello/Othello-main/AgentesEspecificos/AgenteOthello.py",
+    "codigo/othello/Othello-main/TableroOthello.py",
+    "codigo/othello/Othello-main/interfaz_grafica.py",
+    "codigo/othello/Othello-main/servidor.py"
+  ],
+  "archivos_originales_sha256": {
+    "datos\\othello\\torneo_104\\partida_a000_d4_0_1_c1.json": "e5107db804d9e27fb9c0b5f8ee546c3c62fbd9a0f018f6c15d9d9de40078758d",
+    "datos\\othello\\torneo_104\\partida_a000_d4_0_1_c2.json": "dd312039a7d71b3d93ee8cfc7c421b8ac16ef6c54e61f8a243dd2098248c9205",
+    "datos\\othello\\torneo_104\\partida_a000_d5_0_1_c1.json": "abfa8f17261a8b19284a646bb0eaeb9a008d1eef8db9f23f2151e6adde8d4cfe",
+    "datos\\othello\\torneo_104\\partida_a000_d5_0_1_c2.json": "5cf42aa0c9be799e4fbf123f5f6c92365f8f414c95b8715e21ce9bf46c0f7018",
+    "datos\\othello\\torneo_104\\partida_a000_d6_0_1_c1.json": "b5ec9a8cc9dc10afdf5c9bd5d78cb6c61750d55a87ade4ab2fd1cf48ab0d7d41",
+    "datos\\othello\\torneo_104\\partida_a000_d6_0_1_c2.json": "1031e84e4d514fa41240136f3cba3c86592a7812d3badc2c81626aae21c51d56",
+    "datos\\othello\\torneo_104\\partida_a000_d7_0_1_c1.json": "92be01bbba684b71d9005cc00c0a71f7e06797669c829469fdc19737b73c8498",
+    "datos\\othello\\torneo_104\\partida_a000_d7_0_1_c2.json": "56199728d9eb3670352337d5747b847c8395015462e22fa7bf38d8fbf4cd5db3",
+    "datos\\othello\\torneo_104\\manifest_othello.json": "2f64fe2869378b20c815c4b95055ea125d63ca5bbb20c1de072f3fa1ba24d94f",
+    "datos\\othello\\benchmark_othello.json": "798a28ab4998d4afc79357e32d7af58f4c1195e8c3d8c9787e8a687396589c60"
+  }
+}
