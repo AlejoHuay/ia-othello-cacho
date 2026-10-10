@@ -1,0 +1,6 @@
+configuracion,tiempo_medio_ms,tiempo_std_ms,evaluaciones_medio,nodos_max_medio,nodos_azar_medio,cortes_medio
+Mejorado_Completo,17.871,12.468,19.9,451.3,412.9,235.5
+Sin_Poda,17.322,11.171,21.2,505.0,228.7,0.0
+Sin_Memo_Prof1,92.118,52.282,6236.3,1119.1,18.7,0.0
+Con_Memo_Prof1,8.888,4.189,189.2,253.0,18.7,0.0
+Con_Memo_Prof2,14.480,8.781,105.2,421.0,158.7,0.0

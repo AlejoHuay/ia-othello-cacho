@@ -1,0 +1,202 @@
+{
+  "torneo_base_vs_mejorada": {
+    "enfrentamiento": "Base vs Mejorada",
+    "total_partidas": 100,
+    "victorias_a": 1,
+    "victorias_b": 99,
+    "empates": 0,
+    "win_rate_a": 0.01,
+    "win_rate_b": 0.99,
+    "ic_wilson_95_a": [
+      0.0017674320641406505,
+      0.054486196178705315
+    ],
+    "ic_wilson_95_b": [
+      0.9455138038212946,
+      0.9982325679358593
+    ],
+    "test_binomial_p_valor": 1.5934990285464438e-28,
+    "chi2_stat": 96.04,
+    "chi2_p_valor": 1.1258564622753109e-22,
+    "puntaje_medio_a": 13.77,
+    "puntaje_std_a": 28.160383017941566,
+    "puntaje_medio_b": 174.83,
+    "puntaje_std_b": 30.794547267562507,
+    "diferencia_media_puntaje_a_menos_b": -161.06,
+    "ic_bootstrap_95_diferencia": [
+      -169.63275,
+      -151.49825
+    ],
+    "t_student_stat": -34.68220640426042,
+    "t_student_p_valor": 3.4113998568039366e-57,
+    "correlacion_pearson_mitad_final": 0.0,
+    "pearson_p_valor": 1.0,
+    "correlacion_spearman_mitad_final": 0.0,
+    "spearman_p_valor": 1.0,
+    "tiempo_promedio_decision_a_ms": 20.609262267411587,
+    "tiempo_promedio_decision_b_ms": 13.876696263838317
+  },
+  "torneo_aislamiento_evaluacion": {
+    "enfrentamiento": "Mej_FuncBase vs Mej_FuncMejorada",
+    "total_partidas": 100,
+    "victorias_a": 48,
+    "victorias_b": 51,
+    "empates": 1,
+    "win_rate_a": 0.48,
+    "win_rate_b": 0.51,
+    "ic_wilson_95_a": [
+      0.384645517580519,
+      0.5768342223477603
+    ],
+    "ic_wilson_95_b": [
+      0.4134801193402717,
+      0.6057800106955886
+    ],
+    "test_binomial_p_valor": 0.8408215252256424,
+    "chi2_stat": 0.09090909090909091,
+    "chi2_p_valor": 0.763024600552995,
+    "puntaje_medio_a": 171.65,
+    "puntaje_std_a": 31.91604358913928,
+    "puntaje_medio_b": 177.65,
+    "puntaje_std_b": 28.76529018090934,
+    "diferencia_media_puntaje_a_menos_b": -6.0,
+    "ic_bootstrap_95_diferencia": [
+      -14.65175,
+      2.8314999999999917
+    ],
+    "t_student_stat": -1.3249433105354491,
+    "t_student_p_valor": 0.18823997442843296,
+    "correlacion_pearson_mitad_final": 0.6805540954522953,
+    "pearson_p_valor": 6.76237080932484e-15,
+    "correlacion_spearman_mitad_final": 0.6631077740301388,
+    "spearman_p_valor": 5.6288739685045976e-14,
+    "tiempo_promedio_decision_a_ms": 13.915918049231307,
+    "tiempo_promedio_decision_b_ms": 14.87827618326986
+  },
+  "eficiencia": [
+    {
+      "configuracion": "Mejorado_Completo",
+      "tiempo_medio_ms": 17.87120693337177,
+      "tiempo_std_ms": 12.467608319762475,
+      "evaluaciones_medio": 19.933333333333334,
+      "nodos_max_medio": 451.26666666666665,
+      "nodos_azar_medio": 412.8666666666667,
+      "cortes_medio": 235.46666666666667
+    },
+    {
+      "configuracion": "Sin_Poda",
+      "tiempo_medio_ms": 17.322464466572757,
+      "tiempo_std_ms": 11.17102489597312,
+      "evaluaciones_medio": 21.2,
+      "nodos_max_medio": 505.0,
+      "nodos_azar_medio": 228.73333333333332,
+      "cortes_medio": 0.0
+    },
+    {
+      "configuracion": "Sin_Memo_Prof1",
+      "tiempo_medio_ms": 92.11753186661251,
+      "tiempo_std_ms": 52.28224961142039,
+      "evaluaciones_medio": 6236.333333333333,
+      "nodos_max_medio": 1119.0666666666666,
+      "nodos_azar_medio": 18.733333333333334,
+      "cortes_medio": 0.0
+    },
+    {
+      "configuracion": "Con_Memo_Prof1",
+      "tiempo_medio_ms": 8.888070266645324,
+      "tiempo_std_ms": 4.188731221891143,
+      "evaluaciones_medio": 189.2,
+      "nodos_max_medio": 253.0,
+      "nodos_azar_medio": 18.733333333333334,
+      "cortes_medio": 0.0
+    },
+    {
+      "configuracion": "Con_Memo_Prof2",
+      "tiempo_medio_ms": 14.479660600015146,
+      "tiempo_std_ms": 8.780768774854689,
+      "evaluaciones_medio": 105.2,
+      "nodos_max_medio": 421.0,
+      "nodos_azar_medio": 158.73333333333332,
+      "cortes_medio": 0.0
+    }
+  ],
+  "casos_decisiones": [
+    {
+      "escenario": "Par de 3 con 2 tiradas restantes",
+      "dados": [
+        2,
+        3,
+        3,
+        5,
+        6
+      ],
+      "tiradas_restantes": 2,
+      "usadas": [],
+      "decision_mejorada": "('tirar', frozenset({0, 3, 4}))",
+      "valor_esperado_mejorada": -0.6470447825702211,
+      "decision_base": "('tirar', frozenset({0, 1, 2, 3, 4}))"
+    },
+    {
+      "escenario": "Casi escalera con 'escalera' ya usada",
+      "dados": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "tiradas_restantes": 1,
+      "usadas": [
+        "escalera"
+      ],
+      "decision_mejorada": "('tirar', frozenset({1, 2, 3, 4}))",
+      "valor_esperado_mejorada": -16.65339294745921,
+      "decision_base": "('anotar', '5')"
+    },
+    {
+      "escenario": "Trío de 6 al inicio de turno",
+      "dados": [
+        6,
+        6,
+        6,
+        2,
+        3
+      ],
+      "tiradas_restantes": 2,
+      "usadas": [],
+      "decision_mejorada": "('tirar', frozenset({3, 4}))",
+      "valor_esperado_mejorada": 6.272811704534714,
+      "decision_base": "('tirar', frozenset({0, 1, 2, 3, 4}))"
+    },
+    {
+      "escenario": "Poker servido con 1 tirada restante",
+      "dados": [
+        1,
+        1,
+        1,
+        1,
+        5
+      ],
+      "tiradas_restantes": 1,
+      "usadas": [],
+      "decision_mejorada": "('tirar', frozenset({4}))",
+      "valor_esperado_mejorada": 14.64511572470874,
+      "decision_base": "('anotar', 'poker')"
+    },
+    {
+      "escenario": "Grande servida",
+      "dados": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "tiradas_restantes": 3,
+      "usadas": [],
+      "decision_mejorada": "('anotar', 'grande')",
+      "valor_esperado_mejorada": 33.674075157221225,
+      "decision_base": "('anotar', 'grande')"
+    }
+  ]
+}
