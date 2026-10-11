@@ -1,0 +1,16 @@
+% 13. Métodos Estadísticos Requeridos; 16. Formato de Tablas y Figuras.
+\begin{table}[htbp]
+\centering\small
+\caption{Contrastes por bloques de apertura; A/B identifica los agentes. IC: bootstrap percentil al 95\% para diferencia media A-B. G/P/E: bloques ganados/perdidos/empatados.}
+\label{tab:othello_inferencia}
+\begin{tabular}{lrrrrrr}
+\toprule
+A/B & Prof. & G/P/E & $p$ & $p_{\mathrm{Holm}}$ & $\overline{\Delta}$ & IC95 $\Delta$ \\
+\midrule
+fija/etapas & 4 & 1/0/2 & 1.0000 & 1.0000 & 7.33 & [0.0000, 19.0000] \\
+fija/etapas & 5 & 2/0/0 & 0.5000 & 1.0000 & 21.50 & [18.0000, 25.0000] \\
+fija/etapas & 6 & 1/0/1 & 1.0000 & 1.0000 & 7.50 & [-4.0000, 19.0000] \\
+fija/etapas & 7 & 1/0/1 & 1.0000 & 1.0000 & 6.50 & [1.0000, 12.0000] \\
+\bottomrule
+\end{tabular}
+\end{table}

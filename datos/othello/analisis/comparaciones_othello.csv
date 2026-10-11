@@ -1,0 +1,5 @@
+agente_a,agente_b,profundidad,n_bloques,bloques_ganados,bloques_perdidos,bloques_empatados,p_binomial,p_holm,wilson95,diferencia_media,bootstrap95_diferencia,proporcion_victorias,bootstrap95_victorias
+fija,etapas,4,3,1,0,2,1.0,1.0,"[0.2065, 1.0000]",7.333333333333333,"[0.0000, 19.0000]",0.6666666666666666,"[0.5000, 1.0000]"
+fija,etapas,5,2,2,0,0,0.5,1.0,"[0.3424, 1.0000]",21.5,"[18.0000, 25.0000]",1.0,"[1.0000, 1.0000]"
+fija,etapas,6,2,1,0,1,1.0,1.0,"[0.2065, 1.0000]",7.5,"[-4.0000, 19.0000]",0.75,"[0.5000, 1.0000]"
+fija,etapas,7,2,1,0,1,1.0,1.0,"[0.2065, 1.0000]",6.5,"[1.0000, 12.0000]",0.75,"[0.5000, 1.0000]"

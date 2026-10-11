@@ -1,0 +1,65 @@
+agente_a,agente_b,profundidad,ply,evaluacion,n_bloques,metodo,r,p,ic95,replicas_bootstrap_validas,interpretacion
+fija,etapas,4,20,etapas,3,pearson,-0.14476199975238715,1.0,"[-1.0000, 1.0000]",1779,Asociación negativa; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,20,etapas,3,spearman,0.5,1.0,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,20,fija,3,pearson,-0.14476199975238715,1.0,"[-1.0000, 1.0000]",1779,Asociación negativa; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,20,fija,3,spearman,0.5,1.0,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,30,etapas,3,pearson,0.7882003138187452,0.49975012493753124,"[0.7882, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,30,etapas,3,spearman,1.0,0.33183408295852074,"[1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,30,fija,3,pearson,0.7882003138187452,0.49975012493753124,"[0.7882, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,30,fija,3,spearman,1.0,0.33183408295852074,"[1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,40,etapas,3,pearson,0.9708686416257201,0.16391804097951024,"[0.9709, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,40,etapas,3,spearman,1.0,0.33183408295852074,"[1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,40,fija,3,pearson,0.9708686416257201,0.16391804097951024,"[0.9709, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,40,fija,3,spearman,1.0,0.33183408295852074,"[1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,50,etapas,3,pearson,0.9912877429284321,0.3288355822088955,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,50,etapas,3,spearman,0.5,1.0,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,50,fija,3,pearson,0.9912485542617371,0.3288355822088955,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,4,50,fija,3,spearman,0.5,1.0,"[-1.0000, 1.0000]",1779,Asociación positiva; no se rechaza ausencia de asociación con este contraste
+fija,etapas,5,20,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,20,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,20,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,20,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,30,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,30,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,30,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,30,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,40,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,40,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,40,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,40,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,50,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,50,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,50,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,5,50,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,20,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,20,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,20,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,20,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,30,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,30,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,30,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,30,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,40,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,40,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,40,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,40,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,50,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,50,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,50,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,6,50,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,20,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,20,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,20,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,20,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,30,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,30,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,30,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,30,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,40,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,40,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,40,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,40,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,50,etapas,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,50,etapas,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,50,fija,2,pearson,,,NA,0,Menos de 3 bloques o varianza nula
+fija,etapas,7,50,fija,2,spearman,,,NA,0,Menos de 3 bloques o varianza nula

@@ -1,0 +1,3 @@
+agente,partidas,victorias,derrotas,empates,diferencia_media,puntos,tiempo_medio_s,nodos_evaluados,nodos_por_segundo
+etapas,19,5,14,0,-9.052631578947368,5.0,5.37809253381441,13169894,5049.080217163433
+fija,19,14,5,0,9.052631578947368,14.0,5.1290548894631405,13025137,5048.669809668392
