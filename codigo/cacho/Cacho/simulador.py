@@ -13,6 +13,9 @@ Uso mínimo:
     from simulador import jugar_partida
     r = jugar_partida(agente_a, agente_b, semilla=7, empieza=0)
     r['puntajes'], r['ganador'], r['decisiones']
+
+Nota de integridad: desarrollado con apoyo de un asistente de IA (Claude,
+Anthropic) sobre el código base proporcionado por el docente.
 """
 import random
 from time import perf_counter

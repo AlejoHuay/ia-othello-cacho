@@ -59,3 +59,9 @@ $$E_{\text{nueva}}(s) = w_1 \cdot f_1 + w_2 \cdot f_2 + w_3 \cdot f_3 + w_4 \cdo
 - **Profundidad adaptativa:** Búsqueda Expectiminimax hasta el final del propio turno (eliminando la miopía de altura 1).
 - **Memoización:** Tablas de transposición para tuplas MAX, AZAR y hojas, reduciendo las evaluaciones en más de $32\times$.
 - **Poda Star1 y reducción de simetrías:** Poda analítica en nodos probabilísticos sin pérdida de optimalidad.
+
+## Uso de IA y código base
+
+- El programa base de Cacho (`AgenteCachoIA.py`, `EntornoCacho.py`, `VistaCacho.py`, `AgenteIA/`) fue proporcionado por el docente y se conserva en el commit inicial del repositorio.
+- Parte del código del agente (función de evaluación, agente mejorado y simulador) se desarrolló con apoyo de un asistente de IA (Claude, de Anthropic), tomando como base ese programa.
+- No se usaron implementaciones de Cacho de terceros; solo librerías estándar (numpy, scipy, pygame).

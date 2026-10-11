@@ -18,6 +18,9 @@ Mejoras respecto a AgenteCachoIA (programa base):
 
 La función de evaluación es intercambiable (FuncionEvaluacionMejorada o
 FuncionEvaluacionBase) para aislar el aporte de la búsqueda y de la función.
+
+Nota de integridad: desarrollado con apoyo de un asistente de IA (Claude,
+Anthropic) sobre el código base proporcionado por el docente.
 """
 from collections import Counter
 from time import perf_counter
