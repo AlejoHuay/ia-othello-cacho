@@ -1,0 +1,20 @@
+note: Running TeX ...
+note: Running BibTeX on validacion.aux ...
+note: Rerunning TeX because bibtex was run ...
+note: Rerunning TeX because "validacion.aux" changed ...
+note: Running xdvipdfmx ...
+note: Writing `validacion.log` (14.20703125 KiB)
+note: Writing `validacion.blg` (260 B)
+note: Writing `validacion.pdf` (972.8671875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)
+Fontconfig error: Cannot load default config file: No such file: (null)
+warning: ../datos/othello/analisis/tabla_othello.tex:4: Underfull \hbox (badness 10000) in paragraph at lines 4--4
+warning: ../datos/othello/analisis/tabla_othello.tex:4: Underfull \hbox (badness 10000) in paragraph at lines 4--4
+warning: ../datos/othello/analisis/tabla_othello.tex:4: Underfull \hbox (badness 10000) in paragraph at lines 4--4
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+warning: ICC profile format spec. version 4.3.0 not supported in current PDF version setting.
+warning: ICC profile not embedded.
+warning: ICC profile format spec. version 4.3.0 not supported in current PDF version setting.
+warning: ICC profile not embedded.
+warning: ICC profile format spec. version 4.3.0 not supported in current PDF version setting.
+warning: ICC profile not embedded.
