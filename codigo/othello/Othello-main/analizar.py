@@ -56,7 +56,7 @@ def resumen(partidas):
     tests=[]
     for (a,b,d),bs in sorted(comparaciones.items()):
         k=sum(x['score']>.5 for x in bs);l=sum(x['score']<.5 for x in bs);n=k+l
-        tests.append(dict(agente_a=a,agente_b=b,profundidad=d,n_bloques=len(bs),
+        tests.append(dict(agente_a=a,agente_b=b,profundidad=d,n_bloques=len(bs),aperturas=[x['apertura'] for x in bs],
             bloques_ganados=k,bloques_perdidos=l,bloques_empatados=len(bs)-n,
             h0='P(bloque ganado por A | bloque no empatado)=0.5',alternativa='bilateral',
             diferencia_media_bloques=float(np.mean([x['diferencia'] for x in bs])),
@@ -185,6 +185,9 @@ def informes_estadisticos(resultado,salida):
         'Binomial exacto bilateral: H0 = P(A gana el bloque | bloque decisivo)=0.5. Bloques empatados excluidos; partidas empatadas aportan medio punto. Holm corrige la familia de contrastes binomiales disponibles. Wilson al 95% estima la proporción de bloques decisivos ganados. Bootstrap percentil por apertura (5000 réplicas, semilla 20261008) estima diferencia media de fichas A-B y proporción de victorias por partida. Son estimandos distintos.', '',
         '| A / B | Prof. | Bloques G/P/E | p bilateral | p Holm | Wilson 95% decisivos | Diferencia A-B | Bootstrap 95% diferencia | Victorias A | Bootstrap 95% victorias |',
         '|---|---:|---|---:|---:|---|---:|---|---:|---|']
+    lineas.insert(6, 'Distribución (profundidad: partidas / bloques completos / partidas sin pareja): '+
+        '; '.join(f"{m['profundidad']}: {m['partidas']} / {m['bloques_completos']} / {m['partidas_sin_pareja']}" for m in resultado['muestra_por_profundidad'])+
+        '. Las partidas sin pareja sólo entran en tablas descriptivas.\n')
     filas=[]
     tex=[r'% 13. Métodos Estadísticos Requeridos; 16. Formato de Tablas y Figuras.',
         r'\begin{table}[htbp]',r'\centering\small',
@@ -210,7 +213,7 @@ def informes_estadisticos(resultado,salida):
         if ci is None:lineas.append('Bootstrap: no estimable con menos de dos bloques.')
         elif ci[0]<=0<=ci[1]:lineas.append('El intervalo bootstrap de diferencia incluye cero; no establece igualdad ni una ventaja inequívoca.')
         else:lineas.append('El intervalo bootstrap de diferencia excluye cero en esta muestra. Es un intervalo marginal sin corrección por multiplicidad, no una prueba de superioridad universal.')
-    lineas += ['', 'Chi-cuadrado: no aplicable. '+resultado['chi_cuadrado']['motivo'], '',
+    lineas += ['', 'Con dos o tres aperturas, los intervalos bootstrap tienen soporte empírico muy limitado. Un intervalo degenerado (por ejemplo [1,1] para victorias) refleja bloques observados idénticos; no garantiza victoria futura ni incertidumbre nula. La interrupción deja un diseño incompleto y una muestra condicionada al orden de ejecución y al costo: estos resultados son exploratorios.', '', 'Chi-cuadrado: no aplicable. '+resultado['chi_cuadrado']['motivo'], '',
         'Wilson por partidas está en analisis_othello.json y es sólo descriptivo: ignora la dependencia de colores y aperturas. No sustituye la inferencia por bloques.', '',
         '## 14. Evidencia Formal de Eficiencia, punto 2', '',
         'Evaluación y diferencia final desde negras, promediadas entre ambos colores de cada apertura. Pearson: asociación lineal; Spearman: asociación de rangos. P bilateral por permutación de bloques, 2000 réplicas; IC bootstrap percentil. Se muestran todos los estratos, también los no significativos o no estimables. Los p de correlación son exploratorios y no están ajustados por multiplicidad; no permiten afirmar causalidad ni capacidad predictiva fuera de muestra. Los intervalos omiten réplicas con varianza nula, cuyo número válido se conserva en el CSV.', '',
@@ -247,7 +250,7 @@ def informes_estadisticos(resultado,salida):
     tabla_corr += [r'\bottomrule',r'\end{tabular}',r'\end{table}']
     (salida/'correlaciones_othello.tex').write_text('\n'.join(tabla_corr)+'\n',encoding='utf-8')
 
-    lineas += ['', 'NA: no estimable/no aplicable, nunca cero ficticio. Las funciones comparten pesos de medio juego; sus evaluaciones y correlaciones coinciden en las colocaciones 20, 30 y 40. Esos duplicados no son evidencia independiente.', '',
+    lineas += ['', 'Con tres bloques sólo hay seis permutaciones posibles del resultado. Las 2000 permutaciones aleatorias aproximan esa distribución discreta, no amplían la muestra. El bootstrap de correlación puede repetir sólo dos pares distintos o producir varianza nula; intervalos estrechos o degenerados no son evidencia de precisión con n=3. No deben prevalecer sobre el tamaño muestral ni sobre el contraste permutacional.', '', 'NA: no estimable/no aplicable, nunca cero ficticio. Las funciones comparten pesos de medio juego; sus evaluaciones y correlaciones coinciden en las colocaciones 20, 30 y 40. Esos duplicados no son evidencia independiente.', '',
         'Las conclusiones se restringen a estas aperturas, agentes y profundidades. Ni la no significancia demuestra igualdad, ni una correlación significativa implica causalidad.', '']
     (salida/'INFERENCIA_OTHELLO.md').write_text('\n'.join(lineas),encoding='utf-8')
 
@@ -261,6 +264,16 @@ def analizar(carpeta,salida,graficos=False,principal=None):
     n_agentes=len(meta['plan']['agentes'])
     esperado=meta['plan']['aperturas']*len(meta['plan']['profundidades'])*n_agentes*(n_agentes-1)
     r['ejecutadas']=len(ps);r['planificadas']=esperado;r['completo']=len(ps)==esperado
+    r['muestra_por_profundidad']=[]
+    for d in sorted({p['fila']['profundidad_a'] for p in ps}):
+        cantidad=sum(p['fila']['profundidad_a']==d for p in ps)
+        bloques=sum(t['n_bloques'] for t in r['comparaciones'] if t['profundidad']==d)
+        r['muestra_por_profundidad'].append(dict(profundidad=d,partidas=cantidad,
+            bloques_completos=bloques,partidas_sin_pareja=cantidad-2*bloques))
+    # Comparación descriptiva de profundidad sobre las mismas aperturas y colores.
+    comunes=set.intersection(*(set(t['aperturas']) for t in r['comparaciones'])) if r['comparaciones'] else set()
+    r['aperturas_comunes']=sorted(comunes)
+    r['tabla_aperturas_comunes']=resumen([p for p in ps if p['apertura_id'] in comunes])['tabla'] if comunes else []
     r['configuracion_estadistica']=dict(numpy=np.__version__,semilla=20261008,bootstrap_replicas=5000,correlacion_replicas=2000,alpha=.05,binomial='bilateral',ajuste='Holm')
     r['advertencia']='Condiciones emparejadas por apertura; no contar repeticiones deterministas como independientes. Curva a igual profundidad para ambos, no contra rival de profundidad fija.'
     if graficos:
@@ -274,10 +287,12 @@ def analizar(carpeta,salida,graficos=False,principal=None):
     campos=['agente','profundidad','partidas','victorias','derrotas','empates','diferencia_media','puntos','tiempo_medio_s','nodos_evaluados','nodos_por_segundo']
     csv_escribir(salida/'tabla_othello.csv',[{k:v[k] for k in campos} for v in r['tabla']],campos)
     latex(r['tabla'],salida/'tabla_othello.tex')
+    csv_escribir(salida/'tabla_aperturas_comunes_othello.csv',
+        [{k:v[k] for k in campos} for v in r['tabla_aperturas_comunes']],campos)
     campos_globales=[c for c in campos if c!='profundidad']
     csv_escribir(salida/'tabla_global_othello.csv',[{k:v[k] for k in campos_globales} for v in r['tabla_global']],campos_globales)
     texto=[r'% 12.1. Para Othello; 13. Métodos Estadísticos Requeridos. Generado por analizar.py.',
-        f"Se completaron {len(ps)} de {esperado} partidas planificadas; quedan {esperado-len(ps)} pendientes. "]
+        f"Se completaron {len(ps)} de {esperado} partidas planificadas; {esperado-len(ps)} no fueron ejecutadas. "]
     for agente in sorted({x['agente'] for x in r['tabla']}):
         filas_agente=[x for x in r['tabla'] if x['agente']==agente]
         v=sum(x['victorias'] for x in filas_agente);e=sum(x['empates'] for x in filas_agente)
@@ -289,7 +304,7 @@ def analizar(carpeta,salida,graficos=False,principal=None):
         valor='no aplicable (bloque empatado)' if t['p_binomial'] is None else f"{t['p_binomial']:.3f}"
         texto.append(f"A profundidad {t['profundidad']}, con {t['n_bloques']} bloque(s), el valor $p$ binomial bilateral es {valor}. ")
     texto.append('Las aperturas son las unidades de inferencia; el número de partidas no equivale al número de observaciones independientes. Los intervalos y las condiciones de aplicabilidad se conservan en el registro estadístico reproducible.')
-    (salida/'resumen_resultados_othello.tex').write_text('\n'.join(texto)+'\n',encoding='utf-8')
+    (salida/'resumen_resultados_othello.tex').write_text('\n'.join(x.rstrip() for x in texto)+'\n',encoding='utf-8')
 
     filas=[]
     for p in ps:
@@ -310,10 +325,11 @@ def analizar(carpeta,salida,graficos=False,principal=None):
         'Binomial bilateral por bloques decisivos; H0: probabilidad de ganar un bloque no empatado = 0.5. Empates de bloque excluidos, partidas empatadas valen 0.5 puntos. Ajuste Holm para comparaciones binomiales. Wilson por partida es descriptivo: ignora dependencia; Wilson por bloque y bootstrap por apertura son los análisis pertinentes. IC bootstrap percentil: 5000 réplicas, semilla 20261008. Pocas aperturas limitan la inferencia.', '']
     for t in r['comparaciones']:
         lineas.append(f"- {t['agente_a']} vs {t['agente_b']}, profundidad {t['profundidad']}: {t['n_bloques']} bloques; ganados/perdidos/empatados={t['bloques_ganados']}/{t['bloques_perdidos']}/{t['bloques_empatados']}; p bilateral={t['p_binomial']}; p Holm={t.get('p_holm')}; IC95 diferencia={t['ic_bootstrap_diferencia']}. {t.get('interpretacion','Sin bloques decisivos: prueba no aplicable')}.")
-    lineas += ['', 'Chi-cuadrado: '+r['chi_cuadrado']['motivo'], '',
+    lineas += ['', 'Con dos o tres aperturas, los intervalos bootstrap tienen soporte empírico muy limitado. Un intervalo degenerado (por ejemplo [1,1] para victorias) refleja bloques observados idénticos; no garantiza victoria futura ni incertidumbre nula. La interrupción deja un diseño incompleto y una muestra condicionada al orden de ejecución y al costo: estos resultados son exploratorios.', '', 'Chi-cuadrado: '+r['chi_cuadrado']['motivo'], '',
         '## 14. Evidencia Formal de Eficiencia',
         'Pearson/Spearman: se correlaciona la media por apertura de evaluaciones desde negras con la media de diferencia final negras-blancas, por profundidad y movimiento. No se mezclan profundidades ni perspectivas. P bilateral por permutación de bloques (2000 réplicas); IC por bootstrap. Son asociaciones exploratorias, no causalidad ni validación predictiva fuera de muestra.',
         'Resultados completos y motivos de no aplicabilidad: analisis_othello.json. Menos de tres bloques o varianza nula: r e inferencia no definidos.',
+        'Las tablas descriptivas incluyen partidas sin pareja. Para comparar profundidades con las mismas aperturas y colores, consultar tabla_aperturas_comunes_othello.csv; la curva principal usa toda la muestra desigual y no aísla un efecto causal de profundidad.',
         'El gráfico log-log describe medidas; no demuestra crecimiento polinomial. Minimax/alfa-beta tienen peor caso exponencial en profundidad. Los tiempos de partidas completas también dependen de las posiciones elegidas. benchmark_othello.py permite controlar el conjunto de posiciones.','']
     (salida/'RESULTADOS_OTHELLO.md').write_text('\n'.join(lineas),encoding='utf-8')
     exportar(carpeta,salida/'resultados_othello.csv')

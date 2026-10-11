@@ -30,3 +30,11 @@ class Bloques(unittest.TestCase):
         self.assertEqual(global_fija['victorias'],3)
         self.assertEqual(global_fija['puntos'],3)
         self.assertAlmostEqual(global_fija['diferencia_media'],2/3)
+
+        # Una partida completa sin su color complementario es descriptiva, no otro bloque.
+        import copy
+        incompleta=copy.deepcopy(partidas[0]);incompleta['apertura_id']=99
+        r_sin_pareja=resumen(partidas+[incompleta])
+        self.assertEqual(r_sin_pareja['comparaciones'],r['comparaciones'])
+        self.assertEqual(r_sin_pareja['correlaciones'],r['correlaciones'])
+        self.assertEqual(r_sin_pareja['tabla_global'][0]['partidas'],7)
