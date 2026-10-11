@@ -1,0 +1,22 @@
+{
+  "referencia": "6.1. Estructura del Torneo; 12.1. Para Othello; 22. Formato de Datos",
+  "fecha_utc": "2026-10-09T20:34:42.556909+00:00",
+  "autorizacion": "Usuario autoriza completar las 96 restantes y actualizar análisis/discusión; no competencia externa ni integración compartida",
+  "commit_base": "6699b4bca1b126beb090f3da4bfd3ca8a96ea984",
+  "comando": "python -X utf8 -u -B torneo.py --max-partidas 96",
+  "python": "3.13.15",
+  "numpy": "2.5.3",
+  "sistema": "Windows-10-10.0.19045-SP0",
+  "cpu": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+  "piloto_sha256": {
+    "partida_a000_d4_0_1_c1.json": "e5107db804d9e27fb9c0b5f8ee546c3c62fbd9a0f018f6c15d9d9de40078758d",
+    "partida_a000_d4_0_1_c2.json": "dd312039a7d71b3d93ee8cfc7c421b8ac16ef6c54e61f8a243dd2098248c9205",
+    "partida_a000_d5_0_1_c1.json": "abfa8f17261a8b19284a646bb0eaeb9a008d1eef8db9f23f2151e6adde8d4cfe",
+    "partida_a000_d5_0_1_c2.json": "5cf42aa0c9be799e4fbf123f5f6c92365f8f414c95b8715e21ce9bf46c0f7018",
+    "partida_a000_d6_0_1_c1.json": "b5ec9a8cc9dc10afdf5c9bd5d78cb6c61750d55a87ade4ab2fd1cf48ab0d7d41",
+    "partida_a000_d6_0_1_c2.json": "1031e84e4d514fa41240136f3cba3c86592a7812d3badc2c81626aae21c51d56",
+    "partida_a000_d7_0_1_c1.json": "92be01bbba684b71d9005cc00c0a71f7e06797669c829469fdc19737b73c8498",
+    "partida_a000_d7_0_1_c2.json": "56199728d9eb3670352337d5747b847c8395015462e22fa7bf38d8fbf4cd5db3"
+  },
+  "analisis": "Se mantiene separación por profundidad, emparejamiento por apertura y colores. No se cambian funciones, pesos ni semillas."
+}

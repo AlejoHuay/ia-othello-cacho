@@ -23,6 +23,12 @@ class Registros(unittest.TestCase):
             self.assertEqual(r['ejecutadas'],2)
             self.assertEqual(r['comparaciones'][0]['n_bloques'],1)
             self.assertIsNone(r['comparaciones'][0]['ic_bootstrap_diferencia'])
+            informe=(raiz/'analisis/INFERENCIA_OTHELLO.md').read_text(encoding='utf-8')
+            self.assertIn('no estimable con menos de dos bloques',informe)
+            self.assertIn('\n| A / B |',informe)
+            tex=(raiz/'analisis/inferencia_othello.tex').read_text(encoding='utf-8')
+            self.assertIn(r'\begin{table}',tex)
+            self.assertNotIn(r'\\begin',tex)
             with (raiz/'analisis/resultados_othello.csv').open(encoding='utf-8',newline='') as f:
                 csvr=csv.reader(f);self.assertEqual(next(csvr),COLUMNAS);self.assertEqual(len(list(csvr)),2)
             with (raiz/'analisis/movimientos_othello.csv').open(encoding='utf-8',newline='') as f:

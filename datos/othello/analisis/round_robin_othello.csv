@@ -1,9 +1,9 @@
 profundidad,agente,rival,partidas,puntos
-4,etapas,fija,2,1
-4,fija,etapas,2,1
-5,etapas,fija,2,0
-5,fija,etapas,2,2
-6,etapas,fija,2,0
-6,fija,etapas,2,2
-7,etapas,fija,2,1
-7,fija,etapas,2,1
+4,etapas,fija,6,2
+4,fija,etapas,6,4
+5,etapas,fija,5,1
+5,fija,etapas,5,4
+6,etapas,fija,4,1
+6,fija,etapas,4,3
+7,etapas,fija,4,1
+7,fija,etapas,4,3

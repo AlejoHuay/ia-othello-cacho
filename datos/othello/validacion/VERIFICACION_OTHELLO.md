@@ -1,4 +1,6 @@
-# Verificación de Othello
+# Verificación de Othello — evidencia histórica del piloto
+
+Este documento conserva la revisión del 9 de octubre de 2026 sobre ocho partidas. Para la muestra actual de 19, consultar `VALIDACION_19_OTHELLO.md` y `validacion_19_othello.json` (11 de octubre de 2026).
 
 Referencia: **3.1. Reglas Fundamentales; 19. Distribución de Puntos, criterios 2 y 7; 20.1. Criterio 1: Función de Evaluación Othello (20 pts); 20.3. Criterio 5: Análisis Estadístico (15 pts)**.
 

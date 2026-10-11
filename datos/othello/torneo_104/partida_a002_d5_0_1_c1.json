@@ -1,0 +1,1269 @@
+{
+  "id": "a002_d5_0_1_c1",
+  "apertura_id": 2,
+  "color_a": 1,
+  "fila": {
+    "agente_a": "fija",
+    "agente_b": "etapas",
+    "ganador": "etapas",
+    "diferencia_fichas": -14,
+    "profundidad_a": 5,
+    "profundidad_b": 5,
+    "tiempo_a": 0.5577800666665603,
+    "tiempo_b": 0.34556085200005326
+  },
+  "negras": 25,
+  "blancas": 39,
+  "tablero_final": [
+    [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2
+    ]
+  ],
+  "movimientos": [
+    {
+      "ply": 9,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        4,
+        2
+      ],
+      "tiempo_s": 0.7262879999998404,
+      "nodos_evaluados": 3228,
+      "nodos_por_segundo": 4444.517877206713,
+      "nodos_visitados": 4008,
+      "cortes": 466,
+      "pase_oponente": false
+    },
+    {
+      "ply": 10,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        5,
+        6
+      ],
+      "tiempo_s": 0.45870130000002973,
+      "nodos_evaluados": 1905,
+      "nodos_por_segundo": 4153.02943331505,
+      "nodos_visitados": 2603,
+      "cortes": 488,
+      "pase_oponente": false
+    },
+    {
+      "ply": 11,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        2,
+        4
+      ],
+      "tiempo_s": 1.1092924000004132,
+      "nodos_evaluados": 5005,
+      "nodos_por_segundo": 4511.885234225111,
+      "nodos_visitados": 6069,
+      "cortes": 644,
+      "pase_oponente": false
+    },
+    {
+      "ply": 12,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        2,
+        5
+      ],
+      "tiempo_s": 0.7242094000002908,
+      "nodos_evaluados": 3229,
+      "nodos_por_segundo": 4458.655190057881,
+      "nodos_visitados": 4225,
+      "cortes": 714,
+      "pase_oponente": false
+    },
+    {
+      "ply": 13,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        1,
+        4
+      ],
+      "tiempo_s": 2.1613170999999056,
+      "nodos_evaluados": 10205,
+      "nodos_por_segundo": 4721.657918683217,
+      "nodos_visitados": 12299,
+      "cortes": 1361,
+      "pase_oponente": false
+    },
+    {
+      "ply": 14,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        3,
+        2
+      ],
+      "tiempo_s": 1.418050199999925,
+      "nodos_evaluados": 6512,
+      "nodos_por_segundo": 4592.221065234746,
+      "nodos_visitados": 8608,
+      "cortes": 1591,
+      "pase_oponente": false
+    },
+    {
+      "ply": 15,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        1,
+        6
+      ],
+      "tiempo_s": 1.9047272999996494,
+      "nodos_evaluados": 9332,
+      "nodos_por_segundo": 4899.389009650735,
+      "nodos_visitados": 11288,
+      "cortes": 1280,
+      "pase_oponente": false
+    },
+    {
+      "ply": 16,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        5,
+        2
+      ],
+      "tiempo_s": 0.9113028000001577,
+      "nodos_evaluados": 4170,
+      "nodos_por_segundo": 4575.8665506122425,
+      "nodos_visitados": 5978,
+      "cortes": 1420,
+      "pase_oponente": false
+    },
+    {
+      "ply": 17,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        2,
+        7
+      ],
+      "tiempo_s": 1.0619535000005271,
+      "nodos_evaluados": 5179,
+      "nodos_por_segundo": 4876.86136916299,
+      "nodos_visitados": 6333,
+      "cortes": 727,
+      "pase_oponente": false
+    },
+    {
+      "ply": 18,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        3,
+        7
+      ],
+      "tiempo_s": 0.2926274999999805,
+      "nodos_evaluados": 1347,
+      "nodos_por_segundo": 4603.1217161753075,
+      "nodos_visitados": 1979,
+      "cortes": 489,
+      "pase_oponente": false
+    },
+    {
+      "ply": 19,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        3,
+        6
+      ],
+      "tiempo_s": 0.7764351999994688,
+      "nodos_evaluados": 3972,
+      "nodos_por_segundo": 5115.687696800348,
+      "nodos_visitados": 4975,
+      "cortes": 650,
+      "pase_oponente": false
+    },
+    {
+      "ply": 20,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        0,
+        7
+      ],
+      "tiempo_s": 0.42970560000048863,
+      "nodos_evaluados": 2013,
+      "nodos_por_segundo": 4684.602667495399,
+      "nodos_visitados": 2737,
+      "cortes": 512,
+      "pase_oponente": false
+    },
+    {
+      "ply": 21,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        4,
+        6
+      ],
+      "tiempo_s": 1.122371700000258,
+      "nodos_evaluados": 5846,
+      "nodos_por_segundo": 5208.61315373388,
+      "nodos_visitados": 7126,
+      "cortes": 787,
+      "pase_oponente": false
+    },
+    {
+      "ply": 22,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        0,
+        5
+      ],
+      "tiempo_s": 0.8265639999999621,
+      "nodos_evaluados": 3923,
+      "nodos_por_segundo": 4746.153957830465,
+      "nodos_visitados": 5600,
+      "cortes": 1220,
+      "pase_oponente": false
+    },
+    {
+      "ply": 23,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        5,
+        7
+      ],
+      "tiempo_s": 0.7715533999999025,
+      "nodos_evaluados": 3919,
+      "nodos_por_segundo": 5079.363268959083,
+      "nodos_visitados": 4826,
+      "cortes": 543,
+      "pase_oponente": false
+    },
+    {
+      "ply": 24,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        1,
+        5
+      ],
+      "tiempo_s": 0.18339649999961694,
+      "nodos_evaluados": 871,
+      "nodos_por_segundo": 4749.272750580405,
+      "nodos_visitados": 1311,
+      "cortes": 301,
+      "pase_oponente": false
+    },
+    {
+      "ply": 25,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        0,
+        4
+      ],
+      "tiempo_s": 0.3662103999995452,
+      "nodos_evaluados": 1920,
+      "nodos_por_segundo": 5242.887695167545,
+      "nodos_visitados": 2474,
+      "cortes": 342,
+      "pase_oponente": false
+    },
+    {
+      "ply": 26,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        0,
+        3
+      ],
+      "tiempo_s": 0.11286210000071151,
+      "nodos_evaluados": 545,
+      "nodos_por_segundo": 4828.901819092186,
+      "nodos_visitados": 837,
+      "cortes": 202,
+      "pase_oponente": false
+    },
+    {
+      "ply": 27,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        0,
+        6
+      ],
+      "tiempo_s": 0.498609000000215,
+      "nodos_evaluados": 2670,
+      "nodos_por_segundo": 5354.89732435405,
+      "nodos_visitados": 3419,
+      "cortes": 447,
+      "pase_oponente": false
+    },
+    {
+      "ply": 28,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        5,
+        4
+      ],
+      "tiempo_s": 0.15703339999981836,
+      "nodos_evaluados": 798,
+      "nodos_por_segundo": 5081.721468177618,
+      "nodos_visitados": 1187,
+      "cortes": 272,
+      "pase_oponente": false
+    },
+    {
+      "ply": 29,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        2,
+        2
+      ],
+      "tiempo_s": 0.4545362999997451,
+      "nodos_evaluados": 2469,
+      "nodos_por_segundo": 5431.909398658335,
+      "nodos_visitados": 3176,
+      "cortes": 434,
+      "pase_oponente": false
+    },
+    {
+      "ply": 30,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        4,
+        7
+      ],
+      "tiempo_s": 0.33979809999982535,
+      "nodos_evaluados": 1797,
+      "nodos_por_segundo": 5288.434514498238,
+      "nodos_visitados": 2655,
+      "cortes": 606,
+      "pase_oponente": false
+    },
+    {
+      "ply": 31,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        1,
+        2
+      ],
+      "tiempo_s": 0.23222619999978633,
+      "nodos_evaluados": 1120,
+      "nodos_por_segundo": 4822.883895103268,
+      "nodos_visitados": 1518,
+      "cortes": 251,
+      "pase_oponente": false
+    },
+    {
+      "ply": 32,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        2,
+        1
+      ],
+      "tiempo_s": 0.21046579999983805,
+      "nodos_evaluados": 1084,
+      "nodos_por_segundo": 5150.4805056253035,
+      "nodos_visitados": 1717,
+      "cortes": 469,
+      "pase_oponente": false
+    },
+    {
+      "ply": 33,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        0,
+        2
+      ],
+      "tiempo_s": 0.16910989999996673,
+      "nodos_evaluados": 966,
+      "nodos_por_segundo": 5712.261671257508,
+      "nodos_visitados": 1288,
+      "cortes": 188,
+      "pase_oponente": false
+    },
+    {
+      "ply": 34,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        0,
+        1
+      ],
+      "tiempo_s": 0.10350220000054833,
+      "nodos_evaluados": 569,
+      "nodos_por_segundo": 5497.467686648068,
+      "nodos_visitados": 867,
+      "cortes": 213,
+      "pase_oponente": false
+    },
+    {
+      "ply": 35,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        6,
+        3
+      ],
+      "tiempo_s": 0.45808649999980844,
+      "nodos_evaluados": 2702,
+      "nodos_por_segundo": 5898.449310340143,
+      "nodos_visitados": 3588,
+      "cortes": 587,
+      "pase_oponente": false
+    },
+    {
+      "ply": 36,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        6,
+        7
+      ],
+      "tiempo_s": 0.908690000000206,
+      "nodos_evaluados": 5269,
+      "nodos_por_segundo": 5798.457119588425,
+      "nodos_visitados": 7142,
+      "cortes": 1318,
+      "pase_oponente": false
+    },
+    {
+      "ply": 37,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        6,
+        4
+      ],
+      "tiempo_s": 0.5380874999991647,
+      "nodos_evaluados": 3158,
+      "nodos_por_segundo": 5868.933955917769,
+      "nodos_visitados": 4306,
+      "cortes": 837,
+      "pase_oponente": false
+    },
+    {
+      "ply": 38,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        6,
+        2
+      ],
+      "tiempo_s": 0.4581081999995149,
+      "nodos_evaluados": 2749,
+      "nodos_por_segundo": 6000.765757964845,
+      "nodos_visitados": 3618,
+      "cortes": 582,
+      "pase_oponente": false
+    },
+    {
+      "ply": 39,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        6,
+        6
+      ],
+      "tiempo_s": 0.37173749999965366,
+      "nodos_evaluados": 2215,
+      "nodos_por_segundo": 5958.505665966075,
+      "nodos_visitados": 3007,
+      "cortes": 554,
+      "pase_oponente": false
+    },
+    {
+      "ply": 40,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        7,
+        7
+      ],
+      "tiempo_s": 0.2456715999996959,
+      "nodos_evaluados": 1516,
+      "nodos_por_segundo": 6170.8394458369485,
+      "nodos_visitados": 2052,
+      "cortes": 346,
+      "pase_oponente": false
+    },
+    {
+      "ply": 41,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        7,
+        6
+      ],
+      "tiempo_s": 0.783693299999868,
+      "nodos_evaluados": 4936,
+      "nodos_por_segundo": 6298.382288072172,
+      "nodos_visitados": 6084,
+      "cortes": 682,
+      "pase_oponente": false
+    },
+    {
+      "ply": 42,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        7,
+        2
+      ],
+      "tiempo_s": 0.44460800000069867,
+      "nodos_evaluados": 2740,
+      "nodos_por_segundo": 6162.73211457215,
+      "nodos_visitados": 3989,
+      "cortes": 942,
+      "pase_oponente": false
+    },
+    {
+      "ply": 43,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        7,
+        3
+      ],
+      "tiempo_s": 0.7019236999994973,
+      "nodos_evaluados": 4550,
+      "nodos_por_segundo": 6482.186026776498,
+      "nodos_visitados": 5660,
+      "cortes": 658,
+      "pase_oponente": false
+    },
+    {
+      "ply": 44,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        7,
+        4
+      ],
+      "tiempo_s": 0.1524082999994789,
+      "nodos_evaluados": 938,
+      "nodos_por_segundo": 6154.520455927971,
+      "nodos_visitados": 1424,
+      "cortes": 356,
+      "pase_oponente": false
+    },
+    {
+      "ply": 45,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        7,
+        5
+      ],
+      "tiempo_s": 0.4543091000005006,
+      "nodos_evaluados": 3045,
+      "nodos_por_segundo": 6702.485158225192,
+      "nodos_visitados": 3845,
+      "cortes": 445,
+      "pase_oponente": false
+    },
+    {
+      "ply": 46,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        6,
+        5
+      ],
+      "tiempo_s": 0.03153860000020359,
+      "nodos_evaluados": 193,
+      "nodos_por_segundo": 6119.4853290492965,
+      "nodos_visitados": 334,
+      "cortes": 102,
+      "pase_oponente": false
+    },
+    {
+      "ply": 47,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        5,
+        1
+      ],
+      "tiempo_s": 0.18479430000024877,
+      "nodos_evaluados": 1161,
+      "nodos_por_segundo": 6282.661315843817,
+      "nodos_visitados": 1608,
+      "cortes": 241,
+      "pase_oponente": false
+    },
+    {
+      "ply": 48,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        4,
+        0
+      ],
+      "tiempo_s": 0.13249180000002525,
+      "nodos_evaluados": 842,
+      "nodos_por_segundo": 6355.110278521686,
+      "nodos_visitados": 1301,
+      "cortes": 280,
+      "pase_oponente": false
+    },
+    {
+      "ply": 49,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        4,
+        1
+      ],
+      "tiempo_s": 0.13178009999955975,
+      "nodos_evaluados": 856,
+      "nodos_por_segundo": 6495.669680041673,
+      "nodos_visitados": 1261,
+      "cortes": 228,
+      "pase_oponente": false
+    },
+    {
+      "ply": 50,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        3,
+        0
+      ],
+      "tiempo_s": 0.059315800000149466,
+      "nodos_evaluados": 286,
+      "nodos_por_segundo": 4821.649543617035,
+      "nodos_visitados": 500,
+      "cortes": 128,
+      "pase_oponente": false
+    },
+    {
+      "ply": 51,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        1,
+        1
+      ],
+      "tiempo_s": 0.04250640000009298,
+      "nodos_evaluados": 280,
+      "nodos_por_segundo": 6587.243332754303,
+      "nodos_visitados": 432,
+      "cortes": 72,
+      "pase_oponente": false
+    },
+    {
+      "ply": 52,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        2,
+        0
+      ],
+      "tiempo_s": 0.015558899999632558,
+      "nodos_evaluados": 94,
+      "nodos_por_segundo": 6041.558207985136,
+      "nodos_visitados": 209,
+      "cortes": 84,
+      "pase_oponente": false
+    },
+    {
+      "ply": 53,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        6,
+        1
+      ],
+      "tiempo_s": 0.027283699999316013,
+      "nodos_evaluados": 178,
+      "nodos_por_segundo": 6524.041827335089,
+      "nodos_visitados": 319,
+      "cortes": 64,
+      "pase_oponente": false
+    },
+    {
+      "ply": 54,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        5,
+        0
+      ],
+      "tiempo_s": 0.020038300000123854,
+      "nodos_evaluados": 123,
+      "nodos_por_segundo": 6138.245260288535,
+      "nodos_visitados": 269,
+      "cortes": 80,
+      "pase_oponente": false
+    },
+    {
+      "ply": 55,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        1,
+        0
+      ],
+      "tiempo_s": 0.009687300000223331,
+      "nodos_evaluados": 57,
+      "nodos_por_segundo": 5883.992443579317,
+      "nodos_visitados": 140,
+      "cortes": 36,
+      "pase_oponente": false
+    },
+    {
+      "ply": 56,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        3,
+        1
+      ],
+      "tiempo_s": 0.0022943000003579073,
+      "nodos_evaluados": 24,
+      "nodos_por_segundo": 10460.706967814163,
+      "nodos_visitados": 74,
+      "cortes": 20,
+      "pase_oponente": false
+    },
+    {
+      "ply": 57,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        6,
+        0
+      ],
+      "tiempo_s": 0.000974800000221876,
+      "nodos_evaluados": 10,
+      "nodos_por_segundo": 10258.514564755727,
+      "nodos_visitados": 31,
+      "cortes": 9,
+      "pase_oponente": true
+    },
+    {
+      "ply": 58,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        0,
+        0
+      ],
+      "tiempo_s": 0.0003882000000885455,
+      "nodos_evaluados": 4,
+      "nodos_por_segundo": 10303.967024955255,
+      "nodos_visitados": 12,
+      "cortes": 3,
+      "pase_oponente": true
+    },
+    {
+      "ply": 59,
+      "jugador": 1,
+      "agente": "fija",
+      "accion": [
+        7,
+        0
+      ],
+      "tiempo_s": 0.00017899999966175528,
+      "nodos_evaluados": 2,
+      "nodos_por_segundo": 11173.184378655144,
+      "nodos_visitados": 5,
+      "cortes": 1,
+      "pase_oponente": false
+    },
+    {
+      "ply": 60,
+      "jugador": 2,
+      "agente": "etapas",
+      "accion": [
+        7,
+        1
+      ],
+      "tiempo_s": 7.860000005166512e-05,
+      "nodos_evaluados": 1,
+      "nodos_por_segundo": 12722.646302069757,
+      "nodos_visitados": 2,
+      "cortes": 0,
+      "pase_oponente": false
+    }
+  ],
+  "posiciones": [
+    {
+      "ply": 20,
+      "perspectiva": 1,
+      "tablero": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          1,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          0,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "componentes": {
+        "fichas": -0.15625,
+        "esquinas": -0.25,
+        "movilidad": 0.14285714285714285,
+        "frontera": 0.36363636363636365
+      },
+      "evaluaciones": {
+        "fija": -1.107954545454545,
+        "etapas": -1.107954545454545
+      }
+    },
+    {
+      "ply": 30,
+      "perspectiva": 1,
+      "tablero": [
+        [
+          0,
+          0,
+          0,
+          2,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          2,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "componentes": {
+        "fichas": -0.09375,
+        "esquinas": -0.25,
+        "movilidad": 0.125,
+        "frontera": 0.16666666666666666
+      },
+      "evaluaciones": {
+        "fija": -4.0625,
+        "etapas": -4.0625
+      }
+    },
+    {
+      "ply": 40,
+      "perspectiva": 1,
+      "tablero": [
+        [
+          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          1,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "componentes": {
+        "fichas": -0.28125,
+        "esquinas": -0.5,
+        "movilidad": 0.3333333333333333,
+        "frontera": 0.5294117647058824
+      },
+      "evaluaciones": {
+        "fija": -3.2046568627450984,
+        "etapas": -3.2046568627450984
+      }
+    },
+    {
+      "ply": 50,
+      "perspectiva": 1,
+      "tablero": [
+        [
+          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2
+        ]
+      ],
+      "componentes": {
+        "fichas": -0.375,
+        "esquinas": -0.5,
+        "movilidad": 0.7777777777777778,
+        "frontera": 0.7142857142857143
+      },
+      "evaluaciones": {
+        "fija": 14.186507936507937,
+        "etapas": -24.275793650793652
+      }
+    }
+  ],
+  "estado": "completa",
+  "duracion_s": 23.76884870000049
+}

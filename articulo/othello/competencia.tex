@@ -4,7 +4,9 @@
 \subsection{Agentes y metodología}
 Se enfrentan \texttt{fija} y \texttt{etapas} con la misma búsqueda Alpha-Beta. El plan acordado comprende 13 aperturas de ocho colocaciones, dos asignaciones de color y profundidades 4, 5, 6 y 7: 104 partidas. Las aperturas se generan eligiendo acciones legales con semilla 20261008, rechazando equivalencias por simetría. Los desempates de búsqueda son deterministas; se exploran primero esquinas y luego coordenadas. Puntuación: victoria 1, empate 0.5, derrota 0. Ambos rivales usan la misma profundidad en cada partida.
 
-Por decisión del usuario, la ejecución se limita al piloto de una apertura, con ocho partidas; las 96 restantes quedan pendientes. El hardware, versiones y huellas de código están en el manifiesto del experimento. Los tiempos miden búsqueda e instrumentación, excluyen apertura, red, dibujo y escritura. Un nodo evaluado es una hoja terminal o una hoja de corte, no todo nodo visitado. Se conserva un registro por movimiento y evaluaciones intermedias desde negras.
+La muestra se cerró en 19 partidas completas: ocho del piloto y once de la ampliación. Se interrumpió la ejecución por su costo computacional y se decidió conservar esta muestra; 85 partidas del plan no se ejecutaron. Los registros suman 5188.29 s de decisiones (86.47 minutos), de los cuales 4085.24 s (78.7\%) corresponden a las cuatro partidas de profundidad 7. En ese nivel una partida requirió entre 811.56 y 1239.69 s de decisiones (13.53--20.66 minutos). Estas cifras respaldan la limitación de recursos; no son una predicción exacta del costo restante ni el tiempo de la sesión completa. No hubo selección de partidas por ganador: se incluyen todas las partidas finalizadas disponibles, incluida una derrota de \texttt{fija} sin pareja de color.
+
+Se dispone de 6, 5, 4 y 4 partidas en profundidades 4, 5, 6 y 7, respectivamente. Hay tres aperturas en profundidad 4 y dos pares completos en los demás niveles. La apertura 2 a profundidad 5 sólo tiene a \texttt{fija} con negras: se incluye en los totales descriptivos y se excluye de la inferencia emparejada. El orden de ejecución priorizó las primeras aperturas; no se obtuvo una muestra balanceada del plan completo. El hardware, versiones y huellas de código están en el manifiesto del experimento. Los tiempos miden búsqueda e instrumentación, excluyen apertura, red, dibujo y escritura. Un nodo evaluado es una hoja terminal o una hoja de corte, no todo nodo visitado. Se conserva un registro por movimiento y evaluaciones intermedias desde negras.
 
 \subsection{Resultados y discusión}
 \input{../datos/othello/analisis/tabla_othello.tex}
@@ -13,7 +15,11 @@ Por decisión del usuario, la ejecución se limita al piloto de una apertura, co
 \centering
 \includegraphics[width=.48\linewidth]{../datos/othello/analisis/victorias_profundidad_othello.pdf}
 \includegraphics[width=.48\linewidth]{../datos/othello/analisis/tiempo_profundidad_othello.pdf}
-\caption{Piloto interno: victorias y tiempo medio por movimiento frente a profundidad. Cada nivel usa ambos colores de una apertura; no son réplicas independientes.}
+\caption{Muestra interna de 19 partidas: victorias y tiempo medio por movimiento. Los niveles tienen 6, 5, 4 y 4 partidas y distintas aperturas disponibles; profundidad 5 contiene una partida sin pareja. Curvas descriptivas, no réplicas independientes ni efecto causal de profundidad.}
 \label{fig:othello_profundidad}
 \end{figure}
-El cliente automático permite conectarse al servidor del docente, y el torneo acepta adaptadores de otros grupos. No se recibieron agentes externos; su competencia está pendiente y no se sustituye por estos enfrentamientos internos.
+La ventaja descriptiva de \texttt{fija} es de 14 victorias frente a 5 (73.7\% frente a 26.3\%), sin empates, con diferencia media de +9.05 fichas. No demuestra que los pesos fijos sean óptimos ni que la adaptación por etapas sea perjudicial: los pesos concretos, las aperturas y la búsqueda interactúan. No se realizó una ablación que identifique qué componente explica las diferencias.
+
+Para comparar niveles sin cambiar las aperturas se conserva además el subconjunto común de aperturas 0 y 1, con ambos colores: 16 partidas, cuatro por profundidad, en \nolinkurl{tabla_aperturas_comunes_othello.csv}. Las victorias de \texttt{fija} son 2, 4, 3 y 3 en niveles 4--7. La serie no es monótona y ambos rivales aumentan profundidad simultáneamente; no mide mejora contra un rival fijo. El análisis completo sigue incluyendo las 19 partidas. El tiempo medio por decisión pasa de 0.225/0.233 s (fija/etapas) a profundidad 4 a 19.213/20.084 s a profundidad 7; las posiciones visitadas y la carga del equipo también influyen.
+
+\input{othello/competencia_externa.tex}

@@ -1,172 +1,204 @@
 {
   "referencia": "12.1. Para Othello; 13. Métodos Estadísticos Requeridos; 14. Evidencia Formal de Eficiencia",
+  "tabla_global": [
+    {
+      "partidas": 19,
+      "victorias": 5,
+      "derrotas": 14,
+      "empates": 0,
+      "puntos": 5.0,
+      "diferencia_total": -172,
+      "tiempo_total_s": 2608.3748788999887,
+      "movimientos": 485,
+      "nodos_evaluados": 13169894,
+      "agente": "etapas",
+      "diferencia_media": -9.052631578947368,
+      "tiempo_medio_s": 5.37809253381441,
+      "nodos_por_segundo": 5049.080217163433
+    },
+    {
+      "partidas": 19,
+      "victorias": 14,
+      "derrotas": 5,
+      "empates": 0,
+      "puntos": 14.0,
+      "diferencia_total": 172,
+      "tiempo_total_s": 2579.9146093999598,
+      "movimientos": 503,
+      "nodos_evaluados": 13025137,
+      "agente": "fija",
+      "diferencia_media": 9.052631578947368,
+      "tiempo_medio_s": 5.1290548894631405,
+      "nodos_por_segundo": 5048.669809668392
+    }
+  ],
   "tabla": [
     {
       "agente": "etapas",
       "profundidad": 4,
-      "partidas": 2,
-      "victorias": 1,
-      "derrotas": 1,
+      "partidas": 6,
+      "victorias": 2,
+      "derrotas": 4,
       "empates": 0,
-      "diferencia_total": 0,
-      "puntos": 1.0,
-      "tiempo_total_s": 13.956013000002713,
-      "movimientos": 52,
-      "nodos_evaluados": 73472,
+      "diferencia_total": -44,
+      "puntos": 2.0,
+      "tiempo_total_s": 36.10441300000457,
+      "movimientos": 155,
+      "nodos_evaluados": 168247,
       "nodos_completos": true,
-      "diferencia_media": 0.0,
-      "tiempo_medio_s": 0.26838486538466755,
-      "nodos_por_segundo": 5264.5408111891065,
+      "diferencia_media": -7.333333333333333,
+      "tiempo_medio_s": 0.23293169677422304,
+      "nodos_por_segundo": 4660.012060020993,
       "ic_wilson_descriptivo_partidas": [
-        0.09453120573423074,
-        0.9054687942657693
+        0.09677141110578047,
+        0.700006684861608
       ]
     },
     {
       "agente": "fija",
       "profundidad": 4,
-      "partidas": 2,
-      "victorias": 1,
-      "derrotas": 1,
+      "partidas": 6,
+      "victorias": 4,
+      "derrotas": 2,
       "empates": 0,
-      "diferencia_total": 0,
-      "puntos": 1.0,
-      "tiempo_total_s": 14.356995599955553,
-      "movimientos": 52,
-      "nodos_evaluados": 75582,
+      "diferencia_total": 44,
+      "puntos": 4.0,
+      "tiempo_total_s": 35.30022949995919,
+      "movimientos": 157,
+      "nodos_evaluados": 166956,
       "nodos_completos": true,
-      "diferencia_media": 0.0,
-      "tiempo_medio_s": 0.2760960692299145,
-      "nodos_por_segundo": 5264.471906659495,
+      "diferencia_media": 7.333333333333333,
+      "tiempo_medio_s": 0.22484222611438973,
+      "nodos_por_segundo": 4729.600978945279,
       "ic_wilson_descriptivo_partidas": [
-        0.09453120573423074,
-        0.9054687942657693
+        0.2999933151383921,
+        0.9032285888942196
       ]
     },
     {
       "agente": "etapas",
       "profundidad": 5,
-      "partidas": 2,
-      "victorias": 0,
-      "derrotas": 2,
+      "partidas": 5,
+      "victorias": 1,
+      "derrotas": 4,
       "empates": 0,
-      "diferencia_total": -50,
-      "puntos": 0.0,
-      "tiempo_total_s": 41.725657799994224,
-      "movimientos": 50,
-      "nodos_evaluados": 207848,
+      "diferencia_total": -72,
+      "puntos": 1.0,
+      "tiempo_total_s": 98.07470489999787,
+      "movimientos": 126,
+      "nodos_evaluados": 477591,
       "nodos_completos": true,
-      "diferencia_media": -25.0,
-      "tiempo_medio_s": 0.8345131559998845,
-      "nodos_por_segundo": 4981.299539872773,
+      "diferencia_media": -14.4,
+      "tiempo_medio_s": 0.7783706738095069,
+      "nodos_por_segundo": 4869.665429908527,
       "ic_wilson_descriptivo_partidas": [
-        0.0,
-        0.6576197724933468
+        0.03622410863243014,
+        0.6244653702374745
       ]
     },
     {
       "agente": "fija",
       "profundidad": 5,
-      "partidas": 2,
-      "victorias": 2,
-      "derrotas": 0,
+      "partidas": 5,
+      "victorias": 4,
+      "derrotas": 1,
       "empates": 0,
-      "diferencia_total": 50,
-      "puntos": 2.0,
-      "tiempo_total_s": 40.74640600001294,
-      "movimientos": 54,
-      "nodos_evaluados": 205832,
+      "diferencia_total": 72,
+      "puntos": 4.0,
+      "tiempo_total_s": 103.80168090000916,
+      "movimientos": 134,
+      "nodos_evaluados": 515725,
       "nodos_completos": true,
-      "diferencia_media": 25.0,
-      "tiempo_medio_s": 0.7545630740743137,
-      "nodos_por_segundo": 5051.537551555703,
+      "diferencia_media": 14.4,
+      "tiempo_medio_s": 0.7746394097015609,
+      "nodos_por_segundo": 4968.368484290648,
       "ic_wilson_descriptivo_partidas": [
-        0.3423802275066532,
-        1.0
+        0.3755346297625255,
+        0.9637758913675698
       ]
     },
     {
       "agente": "etapas",
       "profundidad": 6,
-      "partidas": 2,
-      "victorias": 0,
-      "derrotas": 2,
+      "partidas": 4,
+      "victorias": 1,
+      "derrotas": 3,
       "empates": 0,
-      "diferencia_total": -38,
-      "puntos": 0.0,
-      "tiempo_total_s": 232.76103589997365,
-      "movimientos": 51,
-      "nodos_evaluados": 1161726,
+      "diferencia_total": -30,
+      "puntos": 1.0,
+      "tiempo_total_s": 425.5803755999759,
+      "movimientos": 102,
+      "nodos_evaluados": 2084618,
       "nodos_completos": true,
-      "diferencia_media": -19.0,
-      "tiempo_medio_s": 4.56394188039164,
-      "nodos_por_segundo": 4991.067321504955,
+      "diferencia_media": -7.5,
+      "tiempo_medio_s": 4.172356623529176,
+      "nodos_por_segundo": 4898.294469196661,
       "ic_wilson_descriptivo_partidas": [
-        0.0,
-        0.6576197724933468
+        0.0455872608097006,
+        0.699358157417598
       ]
     },
     {
       "agente": "fija",
       "profundidad": 6,
-      "partidas": 2,
-      "victorias": 2,
-      "derrotas": 0,
+      "partidas": 4,
+      "victorias": 3,
+      "derrotas": 1,
       "empates": 0,
-      "diferencia_total": 38,
-      "puntos": 2.0,
-      "tiempo_total_s": 216.50952150004014,
-      "movimientos": 53,
-      "nodos_evaluados": 1079997,
+      "diferencia_total": 30,
+      "puntos": 3.0,
+      "tiempo_total_s": 404.18437590003805,
+      "movimientos": 106,
+      "nodos_evaluados": 1973145,
       "nodos_completos": true,
-      "diferencia_media": 19.0,
-      "tiempo_medio_s": 4.085085311321512,
-      "nodos_por_segundo": 4988.219421101994,
+      "diferencia_media": 7.5,
+      "tiempo_medio_s": 3.813060150000359,
+      "nodos_por_segundo": 4881.794343500288,
       "ic_wilson_descriptivo_partidas": [
-        0.3423802275066532,
-        1.0
+        0.300641842582402,
+        0.9544127391902995
       ]
     },
     {
       "agente": "etapas",
       "profundidad": 7,
-      "partidas": 2,
+      "partidas": 4,
       "victorias": 1,
-      "derrotas": 1,
+      "derrotas": 3,
       "empates": 0,
-      "diferencia_total": -2,
+      "diferencia_total": -26,
       "puntos": 1.0,
-      "tiempo_total_s": 1207.9583076000126,
-      "movimientos": 52,
-      "nodos_evaluados": 6206466,
+      "tiempo_total_s": 2048.6153854000104,
+      "movimientos": 102,
+      "nodos_evaluados": 10439438,
       "nodos_completos": true,
-      "diferencia_media": -1.0,
-      "tiempo_medio_s": 23.229967453846395,
-      "nodos_por_segundo": 5137.980310207136,
+      "diferencia_media": -6.5,
+      "tiempo_medio_s": 20.0844645627452,
+      "nodos_por_segundo": 5095.85062886834,
       "ic_wilson_descriptivo_partidas": [
-        0.09453120573423074,
-        0.9054687942657693
+        0.0455872608097006,
+        0.699358157417598
       ]
     },
     {
       "agente": "fija",
       "profundidad": 7,
-      "partidas": 2,
-      "victorias": 1,
+      "partidas": 4,
+      "victorias": 3,
       "derrotas": 1,
       "empates": 0,
-      "diferencia_total": 2,
-      "puntos": 1.0,
-      "tiempo_total_s": 1202.4589905999528,
-      "movimientos": 52,
-      "nodos_evaluados": 6194945,
+      "diferencia_total": 26,
+      "puntos": 3.0,
+      "tiempo_total_s": 2036.6283230999534,
+      "movimientos": 106,
+      "nodos_evaluados": 10369311,
       "nodos_completos": true,
-      "diferencia_media": 1.0,
-      "tiempo_medio_s": 23.1242113576914,
-      "nodos_por_segundo": 5151.897111193043,
+      "diferencia_media": 6.5,
+      "tiempo_medio_s": 19.213474746225977,
+      "nodos_por_segundo": 5091.410584046511,
       "ic_wilson_descriptivo_partidas": [
-        0.09453120573423074,
-        0.9054687942657693
+        0.300641842582402,
+        0.9544127391902995
       ]
     }
   ],
@@ -175,35 +207,65 @@
       "agente_a": "fija",
       "agente_b": "etapas",
       "profundidad": 4,
-      "n_bloques": 1,
-      "bloques_ganados": 0,
-      "bloques_perdidos": 0,
-      "bloques_empatados": 1,
-      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
-      "alternativa": "bilateral",
-      "p_binomial": null,
-      "ic_wilson_bloques_decisivos": null,
-      "ic_bootstrap_diferencia": null,
-      "ic_bootstrap_winrate": null,
-      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello."
-    },
-    {
-      "agente_a": "fija",
-      "agente_b": "etapas",
-      "profundidad": 5,
-      "n_bloques": 1,
+      "n_bloques": 3,
+      "aperturas": [
+        0,
+        1,
+        2
+      ],
       "bloques_ganados": 1,
       "bloques_perdidos": 0,
-      "bloques_empatados": 0,
+      "bloques_empatados": 2,
       "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
       "alternativa": "bilateral",
+      "diferencia_media_bloques": 7.333333333333333,
+      "proporcion_victorias_bloques": 0.6666666666666666,
       "p_binomial": 1.0,
       "ic_wilson_bloques_decisivos": [
         0.20654931437723745,
         1.0
       ],
-      "ic_bootstrap_diferencia": null,
-      "ic_bootstrap_winrate": null,
+      "ic_bootstrap_diferencia": [
+        0.0,
+        19.0
+      ],
+      "ic_bootstrap_winrate": [
+        0.5,
+        1.0
+      ],
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
+      "p_holm": 1.0,
+      "interpretacion": "No se rechaza H0; no demuestra igualdad"
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "n_bloques": 2,
+      "aperturas": [
+        0,
+        1
+      ],
+      "bloques_ganados": 2,
+      "bloques_perdidos": 0,
+      "bloques_empatados": 0,
+      "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
+      "alternativa": "bilateral",
+      "diferencia_media_bloques": 21.5,
+      "proporcion_victorias_bloques": 1.0,
+      "p_binomial": 0.5,
+      "ic_wilson_bloques_decisivos": [
+        0.3423802275066532,
+        1.0
+      ],
+      "ic_bootstrap_diferencia": [
+        18.0,
+        25.0
+      ],
+      "ic_bootstrap_winrate": [
+        1.0,
+        1.0
+      ],
       "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
       "p_holm": 1.0,
       "interpretacion": "No se rechaza H0; no demuestra igualdad"
@@ -212,19 +274,31 @@
       "agente_a": "fija",
       "agente_b": "etapas",
       "profundidad": 6,
-      "n_bloques": 1,
+      "n_bloques": 2,
+      "aperturas": [
+        0,
+        1
+      ],
       "bloques_ganados": 1,
       "bloques_perdidos": 0,
-      "bloques_empatados": 0,
+      "bloques_empatados": 1,
       "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
       "alternativa": "bilateral",
+      "diferencia_media_bloques": 7.5,
+      "proporcion_victorias_bloques": 0.75,
       "p_binomial": 1.0,
       "ic_wilson_bloques_decisivos": [
         0.20654931437723745,
         1.0
       ],
-      "ic_bootstrap_diferencia": null,
-      "ic_bootstrap_winrate": null,
+      "ic_bootstrap_diferencia": [
+        -4.0,
+        19.0
+      ],
+      "ic_bootstrap_winrate": [
+        0.5,
+        1.0
+      ],
       "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
       "p_holm": 1.0,
       "interpretacion": "No se rechaza H0; no demuestra igualdad"
@@ -233,17 +307,34 @@
       "agente_a": "fija",
       "agente_b": "etapas",
       "profundidad": 7,
-      "n_bloques": 1,
-      "bloques_ganados": 0,
+      "n_bloques": 2,
+      "aperturas": [
+        0,
+        1
+      ],
+      "bloques_ganados": 1,
       "bloques_perdidos": 0,
       "bloques_empatados": 1,
       "h0": "P(bloque ganado por A | bloque no empatado)=0.5",
       "alternativa": "bilateral",
-      "p_binomial": null,
-      "ic_wilson_bloques_decisivos": null,
-      "ic_bootstrap_diferencia": null,
-      "ic_bootstrap_winrate": null,
-      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello."
+      "diferencia_media_bloques": 6.5,
+      "proporcion_victorias_bloques": 0.75,
+      "p_binomial": 1.0,
+      "ic_wilson_bloques_decisivos": [
+        0.20654931437723745,
+        1.0
+      ],
+      "ic_bootstrap_diferencia": [
+        1.0,
+        12.0
+      ],
+      "ic_bootstrap_winrate": [
+        0.5,
+        1.0
+      ],
+      "nota": "Aperturas muestreadas sin reemplazo; inferencia aproximada a esa población de aperturas, no a todo Othello.",
+      "p_holm": 1.0,
+      "interpretacion": "No se rechaza H0; no demuestra igualdad"
     }
   ],
   "correlaciones": [
@@ -254,19 +345,27 @@
       "ply": 20,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": -0.14476199975238715,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.5,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -276,19 +375,27 @@
       "ply": 20,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": -0.14476199975238715,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.5,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -298,19 +405,27 @@
       "ply": 30,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.7882003138187452,
+        "p": 0.49975012493753124,
+        "ic95": [
+          0.7882003138187452,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 1.0,
+        "p": 0.33183408295852074,
+        "ic95": [
+          1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -320,19 +435,27 @@
       "ply": 30,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.7882003138187452,
+        "p": 0.49975012493753124,
+        "ic95": [
+          0.7882003138187452,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 1.0,
+        "p": 0.33183408295852074,
+        "ic95": [
+          1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -342,19 +465,27 @@
       "ply": 40,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.9708686416257201,
+        "p": 0.16391804097951024,
+        "ic95": [
+          0.97086864162572,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 1.0,
+        "p": 0.33183408295852074,
+        "ic95": [
+          1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -364,19 +495,27 @@
       "ply": 40,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.9708686416257201,
+        "p": 0.16391804097951024,
+        "ic95": [
+          0.97086864162572,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 1.0,
+        "p": 0.33183408295852074,
+        "ic95": [
+          1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -386,19 +525,27 @@
       "ply": 50,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
       "exploratorio": true,
       "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.9912877429284321,
+        "p": 0.3288355822088955,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       },
       "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
+        "r": 0.5,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
       }
     },
     {
@@ -408,7 +555,37 @@
       "ply": 50,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 3,
+      "exploratorio": true,
+      "pearson": {
+        "r": 0.9912485542617371,
+        "p": 0.3288355822088955,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
+      },
+      "spearman": {
+        "r": 0.5,
+        "p": 1.0,
+        "ic95": [
+          -1.0,
+          1.0
+        ],
+        "replicas_validas": 1779,
+        "n_bloques": 3
+      }
+    },
+    {
+      "agente_a": "fija",
+      "agente_b": "etapas",
+      "profundidad": 5,
+      "ply": 20,
+      "evaluacion": "etapas",
+      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -428,31 +605,9 @@
       "agente_b": "etapas",
       "profundidad": 5,
       "ply": 20,
-      "evaluacion": "etapas",
-      "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
-      "exploratorio": true,
-      "pearson": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
-      },
-      "spearman": {
-        "r": null,
-        "p": null,
-        "ic95": null,
-        "motivo": "Menos de 3 bloques o varianza nula"
-      }
-    },
-    {
-      "agente_a": "fija",
-      "agente_b": "etapas",
-      "profundidad": 5,
-      "ply": 20,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -474,7 +629,7 @@
       "ply": 30,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -496,7 +651,7 @@
       "ply": 30,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -518,7 +673,7 @@
       "ply": 40,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -540,7 +695,7 @@
       "ply": 40,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -562,7 +717,7 @@
       "ply": 50,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -584,7 +739,7 @@
       "ply": 50,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -606,7 +761,7 @@
       "ply": 20,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -628,7 +783,7 @@
       "ply": 20,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -650,7 +805,7 @@
       "ply": 30,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -672,7 +827,7 @@
       "ply": 30,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -694,7 +849,7 @@
       "ply": 40,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -716,7 +871,7 @@
       "ply": 40,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -738,7 +893,7 @@
       "ply": 50,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -760,7 +915,7 @@
       "ply": 50,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -782,7 +937,7 @@
       "ply": 20,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -804,7 +959,7 @@
       "ply": 20,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -826,7 +981,7 @@
       "ply": 30,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -848,7 +1003,7 @@
       "ply": 30,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -870,7 +1025,7 @@
       "ply": 40,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -892,7 +1047,7 @@
       "ply": 40,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -914,7 +1069,7 @@
       "ply": 50,
       "evaluacion": "etapas",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -936,7 +1091,7 @@
       "ply": 50,
       "evaluacion": "fija",
       "perspectiva": "negras; resultado=negras-blancas; promedios por apertura",
-      "n_bloques": 1,
+      "n_bloques": 2,
       "exploratorio": true,
       "pearson": {
         "r": null,
@@ -956,9 +1111,209 @@
     "aplicable": false,
     "motivo": "Torneo emparejado: filas por agente comparten partidas; no hay muestras independientes de múltiples agentes contra un rival común."
   },
-  "ejecutadas": 8,
+  "ejecutadas": 19,
   "planificadas": 104,
   "completo": false,
+  "muestra_por_profundidad": [
+    {
+      "profundidad": 4,
+      "partidas": 6,
+      "bloques_completos": 3,
+      "partidas_sin_pareja": 0
+    },
+    {
+      "profundidad": 5,
+      "partidas": 5,
+      "bloques_completos": 2,
+      "partidas_sin_pareja": 1
+    },
+    {
+      "profundidad": 6,
+      "partidas": 4,
+      "bloques_completos": 2,
+      "partidas_sin_pareja": 0
+    },
+    {
+      "profundidad": 7,
+      "partidas": 4,
+      "bloques_completos": 2,
+      "partidas_sin_pareja": 0
+    }
+  ],
+  "aperturas_comunes": [
+    0,
+    1
+  ],
+  "tabla_aperturas_comunes": [
+    {
+      "agente": "etapas",
+      "profundidad": 4,
+      "partidas": 4,
+      "victorias": 2,
+      "derrotas": 2,
+      "empates": 0,
+      "diferencia_total": -6,
+      "puntos": 2.0,
+      "tiempo_total_s": 26.37685860000329,
+      "movimientos": 103,
+      "nodos_evaluados": 120243,
+      "nodos_completos": true,
+      "diferencia_media": -1.5,
+      "tiempo_medio_s": 0.25608600582527463,
+      "nodos_por_segundo": 4558.655062888535,
+      "ic_wilson_descriptivo_partidas": [
+        0.15003898915214958,
+        0.8499610108478504
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 4,
+      "partidas": 4,
+      "victorias": 2,
+      "derrotas": 2,
+      "empates": 0,
+      "diferencia_total": 6,
+      "puntos": 2.0,
+      "tiempo_total_s": 26.078769899956114,
+      "movimientos": 105,
+      "nodos_evaluados": 121965,
+      "nodos_completos": true,
+      "diferencia_media": 1.5,
+      "tiempo_medio_s": 0.2483692371424392,
+      "nodos_por_segundo": 4676.792673423038,
+      "ic_wilson_descriptivo_partidas": [
+        0.15003898915214958,
+        0.8499610108478504
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 5,
+      "partidas": 4,
+      "victorias": 0,
+      "derrotas": 4,
+      "empates": 0,
+      "diferencia_total": -86,
+      "puntos": 0.0,
+      "tiempo_total_s": 89.43568359999654,
+      "movimientos": 101,
+      "nodos_evaluados": 434053,
+      "nodos_completos": true,
+      "diferencia_media": -21.5,
+      "tiempo_medio_s": 0.8855018178217479,
+      "nodos_por_segundo": 4853.2418217018785,
+      "ic_wilson_descriptivo_partidas": [
+        0.0,
+        0.4898908364545972
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 5,
+      "partidas": 4,
+      "victorias": 4,
+      "derrotas": 0,
+      "empates": 0,
+      "diferencia_total": 86,
+      "puntos": 4.0,
+      "tiempo_total_s": 88.74161910001203,
+      "movimientos": 107,
+      "nodos_evaluados": 436740,
+      "nodos_completos": true,
+      "diferencia_media": 21.5,
+      "tiempo_medio_s": 0.8293609261683368,
+      "nodos_por_segundo": 4921.478832922722,
+      "ic_wilson_descriptivo_partidas": [
+        0.5101091635454027,
+        1.0
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 6,
+      "partidas": 4,
+      "victorias": 1,
+      "derrotas": 3,
+      "empates": 0,
+      "diferencia_total": -30,
+      "puntos": 1.0,
+      "tiempo_total_s": 425.5803755999759,
+      "movimientos": 102,
+      "nodos_evaluados": 2084618,
+      "nodos_completos": true,
+      "diferencia_media": -7.5,
+      "tiempo_medio_s": 4.172356623529176,
+      "nodos_por_segundo": 4898.294469196661,
+      "ic_wilson_descriptivo_partidas": [
+        0.0455872608097006,
+        0.699358157417598
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 6,
+      "partidas": 4,
+      "victorias": 3,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": 30,
+      "puntos": 3.0,
+      "tiempo_total_s": 404.18437590003805,
+      "movimientos": 106,
+      "nodos_evaluados": 1973145,
+      "nodos_completos": true,
+      "diferencia_media": 7.5,
+      "tiempo_medio_s": 3.813060150000359,
+      "nodos_por_segundo": 4881.794343500288,
+      "ic_wilson_descriptivo_partidas": [
+        0.300641842582402,
+        0.9544127391902995
+      ]
+    },
+    {
+      "agente": "etapas",
+      "profundidad": 7,
+      "partidas": 4,
+      "victorias": 1,
+      "derrotas": 3,
+      "empates": 0,
+      "diferencia_total": -26,
+      "puntos": 1.0,
+      "tiempo_total_s": 2048.6153854000104,
+      "movimientos": 102,
+      "nodos_evaluados": 10439438,
+      "nodos_completos": true,
+      "diferencia_media": -6.5,
+      "tiempo_medio_s": 20.0844645627452,
+      "nodos_por_segundo": 5095.85062886834,
+      "ic_wilson_descriptivo_partidas": [
+        0.0455872608097006,
+        0.699358157417598
+      ]
+    },
+    {
+      "agente": "fija",
+      "profundidad": 7,
+      "partidas": 4,
+      "victorias": 3,
+      "derrotas": 1,
+      "empates": 0,
+      "diferencia_total": 26,
+      "puntos": 3.0,
+      "tiempo_total_s": 2036.6283230999534,
+      "movimientos": 106,
+      "nodos_evaluados": 10369311,
+      "nodos_completos": true,
+      "diferencia_media": 6.5,
+      "tiempo_medio_s": 19.213474746225977,
+      "nodos_por_segundo": 5091.410584046511,
+      "ic_wilson_descriptivo_partidas": [
+        0.300641842582402,
+        0.9544127391902995
+      ]
+    }
+  ],
   "configuracion_estadistica": {
     "numpy": "2.5.3",
     "semilla": 20261008,
