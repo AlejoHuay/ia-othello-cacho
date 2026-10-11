@@ -73,14 +73,14 @@ Ver `DISENO_OTHELLO.md` y `articulo/othello/funcion.tex`: dos propuestas identif
 
 Diseño aprobado: 13 aperturas × dos colores × cuatro profundidades (4,5,6,7) = 104 partidas internas. Aperturas generadas con ocho colocaciones legales uniformes entre las disponibles y semilla 20261008; se rechazan estados equivalentes por rotación/reflexión. Esto define una distribución de aperturas aleatorias, no uniformidad sobre todos los tableros ni partidas expertas. Las dos versiones usan siempre la misma profundidad en cada enfrentamiento: se estudia su comparación relativa, no el efecto de profundidad contra un rival fijo.
 
-**Decisión posterior del usuario: terminar sólo el piloto de ocho partidas (primera apertura, dos colores, profundidades 4–7) y dejar las otras 96 pendientes.** No lanzar el comando sin límite hasta que se autorice continuar.
+**Actualización del 9 de octubre de 2026:** el usuario autorizó completar las 96 partidas restantes del mismo plan y actualizar el análisis y la discusión. La reanudación está documentada en `datos/othello/reanudacion_104_othello.json`; conserva las ocho partidas del piloto y las huellas del código. La competencia externa y la integración del artículo compartido siguen pendientes. El conteo de partidas completas se consulta en los JSON originales; no se declara finalizada la ejecución antes de alcanzar 104.
 
 ```powershell
 # Para iniciar el piloto desde una carpeta de experimento sin partidas:
 # --max-partidas cuenta sólo partidas nuevas; no repetir este comando tras las ocho.
 python torneo.py --max-partidas 8
-# Reanudar después del piloto, sólo cuando el usuario lo indique:
-python torneo.py
+# Reanudación de las 96 restantes, autorizada el 9 de octubre:
+python torneo.py --max-partidas 96
 ```
 
 El torneo guarda cada partida inmediatamente y omite las ya completas. `--max-segundos` limita el presupuesto entre partidas; no corta una búsqueda ni garantiza plazo por jugada. Una interrupción conserva el archivo `.progreso.json` como evidencia incompleta, no como resultado; al reanudar se reinicia esa partida desde su apertura. No editar originales ni confundir archivos de progreso con partidas completas. Cambiar plan o fuentes relevantes requiere otra carpeta de salida; el manifiesto impide mezclar versiones.
@@ -152,3 +152,7 @@ Son tiempos de pared en un equipo de escritorio, sin aislamiento de CPU ni contr
 ## 15. Estructura Requerida (Formato LATEX); 17. Referencias Bibliográficas; 18. Longitud
 
 `articulo/othello/INTEGRACION.md` describe las inserciones propuestas, las citas existentes reutilizadas y el suplemento bibliográfico nuevo. No se modifican `articulo.tex`, `articulo.pdf` ni `referencias.bib`. Resumen, diez páginas y ocho referencias son restricciones del artículo conjunto. La integración final requiere autorización del usuario.
+
+## 13. Métodos Estadísticos Requeridos; 14. Evidencia Formal de Eficiencia: informes ampliados
+
+`analizar.py` también genera `INFERENCIA_OTHELLO.md`, `comparaciones_othello.csv`, `correlaciones_othello.csv` e `inferencia_othello.tex`. Presentan todos los estratos, sus intervalos y condiciones de aplicabilidad. Las correlaciones son exploratorias, con p sin ajuste múltiple; no se seleccionan sólo resultados significativos. Las pruebas sintéticas del agrupamiento por colores están en `pruebas/test_analisis.py` y no forman parte del experimento.
