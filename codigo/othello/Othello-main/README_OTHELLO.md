@@ -2,11 +2,11 @@
 
 ## 1. Información General; 21. Estructura de Archivos; 23. Política de Integridad Académica
 
-Alcance exclusivo: Othello. No se modifican Cacho, el artículo principal, el PDF compartido ni la bibliografía existente. Trabajo en `feature/othello`, sin commits, push ni merge. Se conserva la carpeta del docente. La guía se entregó como `practicaEC02_a.pdf`; las presentaciones de apoyo son `Diapo-IA1-03.pdf`, `Diapo-IA04_Informado.pdf` y `Diapo-ED01.pdf`.
+Alcance exclusivo: Othello. No se modifican Cacho, el artículo principal, el PDF compartido ni la bibliografía existente. Trabajo en `feature/othello`; los commits los gestiona el usuario. Se conserva la carpeta del docente. La guía se entregó como `practicaEC02_a.pdf`; las presentaciones de apoyo son `Diapo-IA1-03.pdf`, `Diapo-IA04_Informado.pdf` y `Diapo-ED01.pdf`.
 
 La portada y 1. Información General difieren en ponderación y tamaño máximo de grupo; no afectan el algoritmo. La fecha indicada en 1. Información General es 10 de octubre, 23:59. Confirmar aspectos administrativos con el docente.
 
-El código base pertenece al material entregado por el docente (Víctor Rodríguez Estévez). Las extensiones de búsqueda, evaluaciones, torneo, análisis, pruebas y borradores de texto fueron desarrolladas con asistencia de **OpenAI Codex**, en esta conversación del 8–9 de octubre de 2026. El grupo debe revisar, comprender y declarar esa asistencia según 23. Política de Integridad Académica. No se incorporó un motor de Othello de terceros ni código de los papers. Las fórmulas estadísticas se implementaron localmente; sus referencias están en `articulo/othello/FUENTES.md`.
+El código base pertenece al material entregado por el docente (Víctor Rodríguez Estévez). Las extensiones de búsqueda, evaluaciones, torneo, análisis, pruebas y borradores de texto fueron desarrolladas con asistencia de **OpenAI Codex**, en esta conversación del 8–11 de octubre de 2026. El grupo debe revisar, comprender y declarar esa asistencia según 23. Política de Integridad Académica. No se incorporó un motor de Othello de terceros ni código de los papers. Las fórmulas estadísticas se implementaron localmente; sus referencias están en `articulo/othello/FUENTES.md`.
 
 ### Correspondencia con 21. Estructura de Archivos
 
@@ -73,23 +73,24 @@ Ver `DISENO_OTHELLO.md` y `articulo/othello/funcion.tex`: dos propuestas identif
 
 Diseño aprobado: 13 aperturas × dos colores × cuatro profundidades (4,5,6,7) = 104 partidas internas. Aperturas generadas con ocho colocaciones legales uniformes entre las disponibles y semilla 20261008; se rechazan estados equivalentes por rotación/reflexión. Esto define una distribución de aperturas aleatorias, no uniformidad sobre todos los tableros ni partidas expertas. Las dos versiones usan siempre la misma profundidad en cada enfrentamiento: se estudia su comparación relativa, no el efecto de profundidad contra un rival fijo.
 
-**Actualización del 9 de octubre de 2026:** el usuario autorizó completar las 96 partidas restantes del mismo plan y actualizar el análisis y la discusión. La reanudación está documentada en `datos/othello/reanudacion_104_othello.json`; conserva las ocho partidas del piloto y las huellas del código. La competencia externa y la integración del artículo compartido siguen pendientes. El conteo de partidas completas se consulta en los JSON originales; no se declara finalizada la ejecución antes de alcanzar 104.
+**Cierre de muestra del 11 de octubre de 2026:** después del piloto de ocho partidas se completaron once adicionales. El usuario canceló la continuación y decidió conservar **19/104 partidas completas**, sin ejecutar las 85 restantes. El costo computacional observado motivó esta limitación: 86.47 minutos acumulados de decisiones, 68.09 de ellos en profundidad 7. No se atribuye a fallos de hardware ni se inventa una incidencia. El archivo de la partida incompleta fue eliminado por el usuario; no forma parte de los resultados. La autorización histórica de reanudación se conserva en `datos/othello/reanudacion_104_othello.json`; el cierre actual está en `datos/othello/cierre_muestra_19_othello.json`.
+
+Para **reanalizar las 19 partidas sin jugar nuevas partidas**, ejecutar desde `Othello-main`:
 
 ```powershell
-# Para iniciar el piloto desde una carpeta de experimento sin partidas:
-# --max-partidas cuenta sólo partidas nuevas; no repetir este comando tras las ocho.
-python torneo.py --max-partidas 8
-# Reanudación de las 96 restantes, autorizada el 9 de octubre:
-python torneo.py --max-partidas 96
+python verificar_registros.py
+python analizar.py --figuras --csv-principal ../../../datos/resultados_othello.csv
 ```
+
+El diseño de 104 se conserva en el manifiesto como plan original, no como experimento terminado. Una eventual ampliación requiere una nueva decisión; `torneo.py --max-partidas N` ejecutaría hasta N partidas nuevas, por lo que no debe usarse para regenerar tablas. La competencia externa se documenta ahora por separado con cinco resultados reportados y tres capturas; la integración del artículo compartido sigue pendiente.
 
 El torneo guarda cada partida inmediatamente y omite las ya completas. `--max-segundos` limita el presupuesto entre partidas; no corta una búsqueda ni garantiza plazo por jugada. Una interrupción conserva el archivo `.progreso.json` como evidencia incompleta, no como resultado; al reanudar se reinicia esa partida desde su apertura. No editar originales ni confundir archivos de progreso con partidas completas. Cambiar plan o fuentes relevantes requiere otra carpeta de salida; el manifiesto impide mezclar versiones.
 
-Puntuación: victoria 1, empate 0.5, derrota 0. No se calcula Elo con un piloto pequeño. Las repeticiones del mismo enfrentamiento determinista no se consideran nuevas observaciones. Una apertura es un bloque; sus colores y profundidades están relacionados. Las comparaciones estadísticas se separan por profundidad.
+Puntuación: victoria 1, empate 0.5, derrota 0. No se calcula Elo con esta muestra pequeña. Las repeticiones del mismo enfrentamiento determinista no se consideran nuevas observaciones. Una apertura es un bloque; sus colores y profundidades están relacionados. Las comparaciones estadísticas se separan por profundidad.
 
 ### Agentes externos — 6. Descripción de la Competencia, punto 3
 
-Pendientes de recepción. El torneo interno no sustituye competencia externa. Se puede usar el protocolo de `ClienteBase` o un adaptador local de confianza registrado por JSON:
+Se recibieron cinco resultados de competencia externa (Ispis: fija, altura 4, Alpha-Beta), con una victoria y cuatro derrotas, y tres capturas contra Juan Pablo. Véase `datos/othello/competencia_externa/COMPETENCIA_EXTERNA_OTHELLO.md`. No se dispone de código rival ni métricas; P5 tiene terminalidad no confirmada. La participación está documentada parcialmente; no constituye una ejecución reproducible de agentes externos en nuestro torneo. Para regenerar el resumen descriptivo: `python analizar_externa_othello.py`. Los CSV externos permanecen en esa carpeta, separados del CSV principal de 19 partidas. Se puede usar el protocolo de `ClienteBase` o un adaptador local de confianza registrado por JSON:
 
 ```json
 [
@@ -99,7 +100,7 @@ Pendientes de recepción. El torneo interno no sustituye competencia externa. Se
 ]
 ```
 
-`crear(altura, **opciones)` devuelve un objeto con `estado`, `programa()` y `get_acciones()`. Se entrega un `ElEstado` copiado; el adaptador debe devolver una tupla legal y respetar la profundidad convenida. Si conoce sus métricas, publica `metricas['nodos_evaluados']` bajo la definición anterior; si no, queda `null`, nunca cero ficticio. El proceso local no aísla código hostil ni impone timeout a un adaptador; usar sólo código confiable. Ejecución: `python torneo.py --agentes agentes_externos.json --salida ../../../datos/othello/externo`. Confirmar formato, presupuesto y protocolo con el organizador cuando exista torneo externo.
+`crear(altura, **opciones)` devuelve un objeto con `estado`, `programa()` y `get_acciones()`. Se entrega un `ElEstado` copiado; el adaptador debe devolver una tupla legal y respetar la profundidad convenida. Si conoce sus métricas, publica `metricas['nodos_evaluados']` bajo la definición anterior; si no, queda `null`, nunca cero ficticio. El proceso local no aísla código hostil ni impone timeout a un adaptador; usar sólo código confiable. Ejecución: `python torneo.py --agentes agentes_externos.json --salida ../../../datos/othello/externo`. Confirmar formato, presupuesto y protocolo antes de futuras ejecuciones instrumentadas.
 
 ## 22. Formato de Datos; 14. Evidencia Formal de Eficiencia
 
@@ -130,7 +131,9 @@ Correlaciones: por pareja de agentes, profundidad, movimiento y función; evalua
 
 Chi-cuadrado sólo procede con observaciones independientes y frecuencias esperadas suficientes. El round-robin emparejado no cumple esa independencia: no convertir automáticamente sus filas por agente en muestras independientes, pues cada partida aparece para ambos rivales. La función `chi_cuadrado(tabla, independientes=True)` permite analizar futuros diseños de muestras disjuntas (p.ej., agentes contra un rival común con aperturas independientes); requiere todas las esperadas >=5. Por ahora se registra “no aplicable” con motivo. No se fuerza una prueba sólo para llenar la rúbrica.
 
-El piloto no alcanza ≥100 partidas y tiene un solo bloque por profundidad. Que p>=0.05 no demuestra igualdad. Los análisis confirmatorios, bootstrap por bloques y correlaciones fiables quedan limitados por el tamaño muestral; su código está preparado y probado con casos matemáticos de referencia, separados de los resultados reales.
+La muestra de 19 no alcanza ≥100 partidas: hay 6/5/4/4 partidas y 3/2/2/2 bloques completos en profundidades 4/5/6/7. `a002_d5_0_1_c1` se incluye en tablas descriptivas y se excluye de inferencia porque falta el color complementario. Bootstrap ya está calculado en los cuatro niveles, pero con dos o tres aperturas no ofrece precisión fiable; [1,1] puede ser un artefacto de bloques observados idénticos. Correlaciones calculadas sólo en profundidad 4, con n=3; demás niveles no estimables. Todos los p binomiales ajustados por Holm son 1; no rechazar H0 no prueba igualdad. Chi-cuadrado no aplica. Ver interpretación completa en `datos/othello/analisis/DISCUSION_OTHELLO.md`.
+
+`tabla_aperturas_comunes_othello.csv` compara las mismas aperturas 0 y 1, ambos colores, en los cuatro niveles (16 partidas). La tabla principal y las curvas incluyen las 19 partidas, con muestras desiguales. Las profundidades comparten aperturas y ambos agentes aumentan profundidad: no interpretar la curva como mejora contra un rival fijo ni como efecto causal. La interrupción por costo y el orden de ejecución limitan la representatividad.
 
 ## 14. Evidencia Formal de Eficiencia
 
@@ -138,7 +141,7 @@ Ver complejidad en `DISENO_OTHELLO.md`. La evaluación de una posición y la exp
 
 `benchmark_othello.py` permite medir las mismas posiciones a distintas profundidades. Su configuración y tiempo quedan separados del torneo. Las mediciones de partidas completas no aíslan por sí solas el efecto de profundidad porque las trayectorias cambian.
 
-Para una comprobación corta y separada, después de terminar el torneo, usar:
+El benchmark original ya está ejecutado y se conserva. El comando utilizado fue (no repetir sobre el mismo archivo):
 
 ```powershell
 python benchmark_othello.py --plies 50
@@ -155,4 +158,4 @@ Son tiempos de pared en un equipo de escritorio, sin aislamiento de CPU ni contr
 
 ## 13. Métodos Estadísticos Requeridos; 14. Evidencia Formal de Eficiencia: informes ampliados
 
-`analizar.py` también genera `INFERENCIA_OTHELLO.md`, `comparaciones_othello.csv`, `correlaciones_othello.csv` e `inferencia_othello.tex`. Presentan todos los estratos, sus intervalos y condiciones de aplicabilidad. Las correlaciones son exploratorias, con p sin ajuste múltiple; no se seleccionan sólo resultados significativos. Las pruebas sintéticas del agrupamiento por colores están en `pruebas/test_analisis.py` y no forman parte del experimento.
+`analizar.py` también genera `INFERENCIA_OTHELLO.md`, `comparaciones_othello.csv`, `correlaciones_othello.csv` , `inferencia_othello.tex` y `correlaciones_othello.tex`. Presentan todos los estratos, sus intervalos y condiciones de aplicabilidad. Las correlaciones son exploratorias, con p sin ajuste múltiple; no se seleccionan sólo resultados significativos. Las pruebas sintéticas del agrupamiento por colores están en `pruebas/test_analisis.py` y no forman parte del experimento.
