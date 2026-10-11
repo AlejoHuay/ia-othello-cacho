@@ -59,6 +59,8 @@ def resumen(partidas):
         tests.append(dict(agente_a=a,agente_b=b,profundidad=d,n_bloques=len(bs),
             bloques_ganados=k,bloques_perdidos=l,bloques_empatados=len(bs)-n,
             h0='P(bloque ganado por A | bloque no empatado)=0.5',alternativa='bilateral',
+            diferencia_media_bloques=float(np.mean([x['diferencia'] for x in bs])),
+            proporcion_victorias_bloques=float(np.mean([x['winrate'] for x in bs])),
             p_binomial=binomial(k,n) if n else None,
             ic_wilson_bloques_decisivos=wilson(k,n),
             ic_bootstrap_diferencia=bootstrap_media([x['diferencia'] for x in bs]),
@@ -77,7 +79,16 @@ def resumen(partidas):
         correlaciones.append(dict(agente_a=a,agente_b=b,profundidad=d,ply=ply,evaluacion=v,
              perspectiva='negras; resultado=negras-blancas; promedios por apertura',
              n_bloques=len(x),exploratorio=True,**correlacion_bloques(x,y)))
-    return dict(referencia=REF,tabla=list(sorted(tabla.values(),key=lambda x:(x['profundidad'],x['agente']))),
+    globales=[]
+    for nombre in sorted({x['agente'] for x in tabla.values()}):
+        rs=[x for x in tabla.values() if x['agente']==nombre]
+        total={k:sum(x[k] for x in rs) for k in ('partidas','victorias','derrotas','empates','puntos','diferencia_total','tiempo_total_s','movimientos','nodos_evaluados')}
+        total['agente']=nombre
+        total['diferencia_media']=total['diferencia_total']/total['partidas']
+        total['tiempo_medio_s']=total['tiempo_total_s']/total['movimientos'] if total['movimientos'] else 0.
+        total['nodos_por_segundo']=total['nodos_evaluados']/total['tiempo_total_s'] if total['tiempo_total_s'] and all(x['nodos_completos'] for x in rs) else None
+        globales.append(total)
+    return dict(referencia=REF,tabla_global=globales,tabla=list(sorted(tabla.values(),key=lambda x:(x['profundidad'],x['agente']))),
                 comparaciones=tests,correlaciones=correlaciones,
                 chi_cuadrado=dict(aplicable=False,motivo='Torneo emparejado: filas por agente comparten partidas; no hay muestras independientes de múltiples agentes contra un rival común.'))
 
@@ -158,6 +169,89 @@ def latex(tabla,path):
     lineas += [r'\bottomrule',r'\end{tabular}',r'\end{table}']
     path.write_text('\n'.join(lineas)+'\n',encoding='utf-8')
 
+
+def informes_estadisticos(resultado,salida):
+    """13. Métodos Estadísticos Requeridos; 14. Evidencia Formal de Eficiencia.
+    Expone todos los contrastes e intervalos; no selecciona sólo significativos.
+    """
+    def numero(x):
+        return 'NA' if x is None else f'{x:.4f}'
+    def intervalo(x):
+        return 'NA' if x is None else f'[{x[0]:.4f}, {x[1]:.4f}]'
+    lineas=['# Inferencia de Othello por bloques', '',
+        'Referencia: 12.1. Para Othello, punto 2; 13. Métodos Estadísticos Requeridos; 13.1. Ejemplo de Análisis Requerido; 14. Evidencia Formal de Eficiencia; 20.3. Criterio 5: Análisis Estadístico (15 pts).', '',
+        f"Muestra disponible: {resultado['ejecutadas']}/{resultado['planificadas']} partidas. Una unidad es una apertura con sus dos colores; las profundidades se analizan por separado.", '',
+        '## 13. Métodos Estadísticos Requeridos', '',
+        'Binomial exacto bilateral: H0 = P(A gana el bloque | bloque decisivo)=0.5. Bloques empatados excluidos; partidas empatadas aportan medio punto. Holm corrige la familia de contrastes binomiales disponibles. Wilson al 95% estima la proporción de bloques decisivos ganados. Bootstrap percentil por apertura (5000 réplicas, semilla 20261008) estima diferencia media de fichas A-B y proporción de victorias por partida. Son estimandos distintos.', '',
+        '| A / B | Prof. | Bloques G/P/E | p bilateral | p Holm | Wilson 95% decisivos | Diferencia A-B | Bootstrap 95% diferencia | Victorias A | Bootstrap 95% victorias |',
+        '|---|---:|---|---:|---:|---|---:|---|---:|---|']
+    filas=[]
+    tex=[r'% 13. Métodos Estadísticos Requeridos; 16. Formato de Tablas y Figuras.',
+        r'\begin{table}[htbp]',r'\centering\small',
+        r'\caption{Contrastes por bloques de apertura; A/B identifica los agentes. IC: bootstrap percentil al 95\% para diferencia media A-B. G/P/E: bloques ganados/perdidos/empatados.}',
+        r'\label{tab:othello_inferencia}',r'\begin{tabular}{lrrrrrr}',r'\toprule',
+        r'A/B & Prof. & G/P/E & $p$ & $p_{\mathrm{Holm}}$ & $\overline{\Delta}$ & IC95 $\Delta$ \\',r'\midrule']
+    for t in resultado['comparaciones']:
+        conteos=f"{t['bloques_ganados']}/{t['bloques_perdidos']}/{t['bloques_empatados']}"
+        filas.append(dict(agente_a=t['agente_a'],agente_b=t['agente_b'],profundidad=t['profundidad'],n_bloques=t['n_bloques'],
+            bloques_ganados=t['bloques_ganados'],bloques_perdidos=t['bloques_perdidos'],bloques_empatados=t['bloques_empatados'],
+            p_binomial=t['p_binomial'],p_holm=t.get('p_holm'),wilson95=intervalo(t['ic_wilson_bloques_decisivos']),
+            diferencia_media=t['diferencia_media_bloques'],bootstrap95_diferencia=intervalo(t['ic_bootstrap_diferencia']),
+            proporcion_victorias=t['proporcion_victorias_bloques'],bootstrap95_victorias=intervalo(t['ic_bootstrap_winrate'])))
+        lineas.append(f"| {t['agente_a']} / {t['agente_b']} | {t['profundidad']} | {conteos} | {numero(t['p_binomial'])} | {numero(t.get('p_holm'))} | {intervalo(t['ic_wilson_bloques_decisivos'])} | {numero(t['diferencia_media_bloques'])} | {intervalo(t['ic_bootstrap_diferencia'])} | {numero(t['proporcion_victorias_bloques'])} | {intervalo(t['ic_bootstrap_winrate'])} |")
+        par=(t['agente_a']+'/'+t['agente_b']).replace('_',r'\_')
+        tex.append(f"{par} & {t['profundidad']} & {conteos} & {numero(t['p_binomial'])} & {numero(t.get('p_holm'))} & {t['diferencia_media_bloques']:.2f} & {intervalo(t['ic_bootstrap_diferencia'])}"+r' \\')
+    tex += [r'\bottomrule',r'\end{tabular}',r'\end{table}']
+    (salida/'inferencia_othello.tex').write_text('\n'.join(tex)+'\n',encoding='utf-8')
+    if filas:csv_escribir(salida/'comparaciones_othello.csv',filas,list(filas[0]))
+    for t in resultado['comparaciones']:
+        lineas += ['',f"Profundidad {t['profundidad']}: "+t.get('interpretacion','Sin bloques decisivos: el binomial no es aplicable')+'.']
+        ci=t['ic_bootstrap_diferencia']
+        if ci is None:lineas.append('Bootstrap: no estimable con menos de dos bloques.')
+        elif ci[0]<=0<=ci[1]:lineas.append('El intervalo bootstrap de diferencia incluye cero; no establece igualdad ni una ventaja inequívoca.')
+        else:lineas.append('El intervalo bootstrap de diferencia excluye cero en esta muestra. Es un intervalo marginal sin corrección por multiplicidad, no una prueba de superioridad universal.')
+    lineas += ['', 'Chi-cuadrado: no aplicable. '+resultado['chi_cuadrado']['motivo'], '',
+        'Wilson por partidas está en analisis_othello.json y es sólo descriptivo: ignora la dependencia de colores y aperturas. No sustituye la inferencia por bloques.', '',
+        '## 14. Evidencia Formal de Eficiencia, punto 2', '',
+        'Evaluación y diferencia final desde negras, promediadas entre ambos colores de cada apertura. Pearson: asociación lineal; Spearman: asociación de rangos. P bilateral por permutación de bloques, 2000 réplicas; IC bootstrap percentil. Se muestran todos los estratos, también los no significativos o no estimables. Los p de correlación son exploratorios y no están ajustados por multiplicidad; no permiten afirmar causalidad ni capacidad predictiva fuera de muestra. Los intervalos omiten réplicas con varianza nula, cuyo número válido se conserva en el CSV.', '',
+        '| Prof. | Colocación | Función | Bloques | Pearson r | p | IC95 r | Spearman rho | p | IC95 rho |',
+        '|---:|---:|---|---:|---:|---:|---|---:|---:|---|']
+    correlaciones=[]
+    for c in resultado['correlaciones']:
+        pe,sp=c['pearson'],c['spearman']
+        lineas.append(f"| {c['profundidad']} | {c['ply']} | {c['evaluacion']} | {c['n_bloques']} | {numero(pe['r'])} | {numero(pe['p'])} | {intervalo(pe['ic95'])} | {numero(sp['r'])} | {numero(sp['p'])} | {intervalo(sp['ic95'])} |")
+        for metodo in ('pearson','spearman'):
+            z=c[metodo]
+            if z['r'] is None:lectura=z['motivo']
+            else:
+                direccion='positiva' if z['r']>0 else 'negativa' if z['r']<0 else 'nula'
+                lectura='Asociación '+direccion+('; p nominal <0.05, exploratorio y sin ajuste múltiple' if z['p']<.05 else '; no se rechaza ausencia de asociación con este contraste')
+            correlaciones.append(dict(agente_a=c['agente_a'],agente_b=c['agente_b'],profundidad=c['profundidad'],ply=c['ply'],evaluacion=c['evaluacion'],n_bloques=c['n_bloques'],metodo=metodo,r=z['r'],p=z['p'],ic95=intervalo(z['ic95']),replicas_bootstrap_validas=z.get('replicas_validas',0),interpretacion=lectura))
+    if correlaciones:csv_escribir(salida/'correlaciones_othello.csv',correlaciones,list(correlaciones[0]))
+    tabla_corr=[r'% 14. Evidencia Formal de Eficiencia, punto 2; 16. Formato de Tablas y Figuras.',
+        r'\begin{table}[htbp]',r'\centering\small',
+        r'\caption{Correlaciones por apertura desde negras. Cada celda muestra Pearson/Spearman; las columnas son colocaciones. N: rango de bloques disponibles. IC, p exploratorios y réplicas válidas: archivo complementario de correlaciones.}',
+        r'\label{tab:othello_correlaciones}',r'\begin{tabular}{rlrrrrr}',r'\toprule',
+        r'Prof. & Función & N & 20 & 30 & 40 & 50 '+chr(92)*2,r'\midrule']
+    grupos=sorted({(c['agente_a'],c['agente_b'],c['profundidad'],c['evaluacion']) for c in resultado['correlaciones']})
+    for a,b,d,v in grupos:
+        cs={c['ply']:c for c in resultado['correlaciones'] if (c['agente_a'],c['agente_b'],c['profundidad'],c['evaluacion'])==(a,b,d,v)}
+        ns=[c['n_bloques'] for c in cs.values()]
+        n=str(min(ns)) if min(ns)==max(ns) else f'{min(ns)}--{max(ns)}'
+        celdas=[]
+        for ply in (20,30,40,50):
+            c=cs.get(ply)
+            celdas.append('--' if c is None or c['pearson']['r'] is None or c['spearman']['r'] is None else f"{c['pearson']['r']:.2f}/{c['spearman']['r']:.2f}")
+        nombre=v.replace('_',chr(92)+'_')
+        tabla_corr.append(f'{d} & {nombre} & {n} & '+' & '.join(celdas)+' '+chr(92)*2)
+    tabla_corr += [r'\bottomrule',r'\end{tabular}',r'\end{table}']
+    (salida/'correlaciones_othello.tex').write_text('\n'.join(tabla_corr)+'\n',encoding='utf-8')
+
+    lineas += ['', 'NA: no estimable/no aplicable, nunca cero ficticio. Las funciones comparten pesos de medio juego; sus evaluaciones y correlaciones coinciden en las colocaciones 20, 30 y 40. Esos duplicados no son evidencia independiente.', '',
+        'Las conclusiones se restringen a estas aperturas, agentes y profundidades. Ni la no significancia demuestra igualdad, ni una correlación significativa implica causalidad.', '']
+    (salida/'INFERENCIA_OTHELLO.md').write_text('\n'.join(lineas),encoding='utf-8')
+
+
 def analizar(carpeta,salida,graficos=False,principal=None):
     carpeta=Path(carpeta);salida=Path(salida);salida.mkdir(parents=True,exist_ok=True)
     ps=leer_partidas(carpeta)
@@ -176,9 +270,12 @@ def analizar(carpeta,salida,graficos=False,principal=None):
             figura_benchmark(benchmark,salida)
             r['benchmark']=str(benchmark.relative_to(carpeta.parent))
     guardar_json(salida/'analisis_othello.json',r)
+    informes_estadisticos(r,salida)
     campos=['agente','profundidad','partidas','victorias','derrotas','empates','diferencia_media','puntos','tiempo_medio_s','nodos_evaluados','nodos_por_segundo']
     csv_escribir(salida/'tabla_othello.csv',[{k:v[k] for k in campos} for v in r['tabla']],campos)
     latex(r['tabla'],salida/'tabla_othello.tex')
+    campos_globales=[c for c in campos if c!='profundidad']
+    csv_escribir(salida/'tabla_global_othello.csv',[{k:v[k] for k in campos_globales} for v in r['tabla_global']],campos_globales)
     texto=[r'% 12.1. Para Othello; 13. Métodos Estadísticos Requeridos. Generado por analizar.py.',
         f"Se completaron {len(ps)} de {esperado} partidas planificadas; quedan {esperado-len(ps)} pendientes. "]
     for agente in sorted({x['agente'] for x in r['tabla']}):
@@ -191,7 +288,7 @@ def analizar(carpeta,salida,graficos=False,principal=None):
     for t in r['comparaciones']:
         valor='no aplicable (bloque empatado)' if t['p_binomial'] is None else f"{t['p_binomial']:.3f}"
         texto.append(f"A profundidad {t['profundidad']}, con {t['n_bloques']} bloque(s), el valor $p$ binomial bilateral es {valor}. ")
-    texto.append('El tamaño muestral limita la inferencia. Los intervalos y las condiciones de aplicabilidad se conservan en el registro estadístico reproducible.')
+    texto.append('Las aperturas son las unidades de inferencia; el número de partidas no equivale al número de observaciones independientes. Los intervalos y las condiciones de aplicabilidad se conservan en el registro estadístico reproducible.')
     (salida/'resumen_resultados_othello.tex').write_text('\n'.join(texto)+'\n',encoding='utf-8')
 
     filas=[]
