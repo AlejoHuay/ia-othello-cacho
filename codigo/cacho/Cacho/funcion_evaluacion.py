@@ -20,6 +20,9 @@ de `jugador` (valores altos = bueno para `jugador`), sin importar a quién le
 toca mover. Esto corrige el error de perspectiva del agente base.
 
 Librerías: numpy (tablas vectorizadas) + biblioteca estándar.
+
+Nota de integridad: desarrollado con apoyo de un asistente de IA (Claude,
+Anthropic) sobre el código base proporcionado por el docente.
 """
 from collections import Counter
 from dataclasses import dataclass, asdict
